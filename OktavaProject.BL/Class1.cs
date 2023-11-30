@@ -1,7 +1,11 @@
 ﻿namespace OktavaProject.BL
 {
-    public class Class1
+    public class UserBL
     {
+        public IEnumerable<string> AddUser()
+        {
+            return new string[] { "value1", "value2" };
+        }
 
     }
 }

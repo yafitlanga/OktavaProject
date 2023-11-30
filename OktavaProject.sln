@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OktavaProject.API", "OktavaProject\OktavaProject.API.csproj", "{E8D488E2-C81C-4F18-B9EE-6244617E5D7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OktavaProject.API", "OktavaProject\OktavaProject.API.csproj", "{E8D488E2-C81C-4F18-B9EE-6244617E5D7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OktavaProject.DL", "OktavaProject.API\OktavaProject.DL.csproj", "{9080219C-DD36-4A7E-A07C-174FDAC40065}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OktavaProject.DL", "OktavaProject.API\OktavaProject.DL.csproj", "{9080219C-DD36-4A7E-A07C-174FDAC40065}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OktavaProject.BL", "OktavaProject.BL\OktavaProject.BL.csproj", "{CE7E67C4-8453-4CE1-9243-DCB16B1342EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OktavaProject.BL", "OktavaProject.BL\OktavaProject.BL.csproj", "{CE7E67C4-8453-4CE1-9243-DCB16B1342EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OktavaProjectEntities", "Entities\OktavaProjectEntities.csproj", "{DAFE3F5E-8E07-4449-BB4C-62237999B417}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{CE7E67C4-8453-4CE1-9243-DCB16B1342EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE7E67C4-8453-4CE1-9243-DCB16B1342EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE7E67C4-8453-4CE1-9243-DCB16B1342EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAFE3F5E-8E07-4449-BB4C-62237999B417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAFE3F5E-8E07-4449-BB4C-62237999B417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAFE3F5E-8E07-4449-BB4C-62237999B417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAFE3F5E-8E07-4449-BB4C-62237999B417}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
