@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Entities\OktavaProjectEntities.csproj" />
     <ProjectReference Include="..\OktavaProject.API\OktavaProject.DL.csproj" />
   </ItemGroup>
 

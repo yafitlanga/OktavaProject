@@ -3,46 +3,44 @@ using OktavaProject.BL;
 using OktavaProject.DL.Models;
 using OktavaProjectEntities.DTO;
 
-
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace OktavaProject.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class LessonsController : ControllerBase
     {
-        private IUserBL userBL;
-        public UsersController(IUserBL userBL)
-        {
-            this.userBL = userBL;
-        }
+        private ILessonBL lessonBL;
 
-        // GET: api/<UsersController>
+        public LessonsController(ILessonBL lessonBL)
+        {
+            this.lessonBL = lessonBL;
+        }
+        // GET: api/<LessonsController>
         [HttpGet]
-        public async Task<List<UserDTO>> GetUsers()
+        public async Task<List<Lesson>> GetLessons()
         {
-            var users =await userBL.GetUsers(); 
-            return users;
+            var lessons = await lessonBL.GetLessons();
+            return lessons;
+            
         }
 
-        // GET api/<UsersController>/5
+        // GET api/<LessonsController>/5
         [HttpGet("{id}")]
-        public async Task<UserDTO> Get(int id)
+        public string Get(int id)
         {
-            var users = await userBL.GetUserById(id);
-            return users;
+            return "value";
         }
 
-        // POST api/<UsersController>
         [HttpPost]
         [Route("AddUser")]
-        public async Task<ActionResult<bool>> AddUser([FromBody] UserDTO user)
+        public async Task<ActionResult<bool>> AddLesson([FromBody] LessonDTO lesson)
         {
             try
             {
-                bool isAddUser = await userBL.AddUser(user);
-                return isAddUser;
+                bool isAddLesson = await lessonBL.AddLessons(lesson);
+                return isAddLesson;
             }
             catch (Exception ex)
             {
@@ -53,12 +51,12 @@ namespace OktavaProject.API.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> Put(int id, [FromBody] UserDTO user)
+        public async Task<ActionResult<bool>> Put(int id, [FromBody] LessonDTO lesson)
         {
             try
             {
-                bool isUpdateUser = await userBL.UpdateUser(user, id);
-                return isUpdateUser;
+                bool isUpdateLesson = await lessonBL.UpdateLesson(lesson, id);
+                return isUpdateLesson;
             }
             catch (Exception ex)
             {
@@ -73,8 +71,8 @@ namespace OktavaProject.API.Controllers
         {
             try
             {
-                bool isRemoveUser = await userBL.RemoveUser(id);
-                return isRemoveUser;
+                bool isRemoveLesson = await lessonBL.RemoveLesson(id);
+                return isRemoveLesson;
             }
             catch (Exception ex)
             {

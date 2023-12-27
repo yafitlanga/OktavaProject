@@ -3,62 +3,59 @@ using OktavaProject.BL;
 using OktavaProject.DL.Models;
 using OktavaProjectEntities.DTO;
 
-
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace OktavaProject.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class EventsController : ControllerBase
     {
-        private IUserBL userBL;
-        public UsersController(IUserBL userBL)
+        // GET: api/<EventController>
+        
+        private IEventBL eventBL;
+        
+        public EventsController(IEventBL eventBL)
         {
-            this.userBL = userBL;
+            this.eventBL = eventBL;
         }
-
-        // GET: api/<UsersController>
         [HttpGet]
-        public async Task<List<UserDTO>> GetUsers()
+        public async Task<List<EventDTO>> GetEvents()
         {
-            var users =await userBL.GetUsers(); 
-            return users;
+            var events = await eventBL.GetEvents();
+            return events;
         }
 
-        // GET api/<UsersController>/5
+        // GET api/<EventController>/5
         [HttpGet("{id}")]
-        public async Task<UserDTO> Get(int id)
+        public string Get(int id)
         {
-            var users = await userBL.GetUserById(id);
-            return users;
+            return "value";
         }
 
-        // POST api/<UsersController>
+        // POST api/<EventController>
         [HttpPost]
-        [Route("AddUser")]
-        public async Task<ActionResult<bool>> AddUser([FromBody] UserDTO user)
+        public async Task<ActionResult<bool>> AddEvent([FromBody] EventDTO _event)
         {
             try
             {
-                bool isAddUser = await userBL.AddUser(user);
-                return isAddUser;
+                bool isAddEvent = await eventBL.AddEvent(_event);
+                return isAddEvent;
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
-
         }
 
-        // PUT api/<UsersController>/5
+        // PUT api/<EventController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> Put(int id, [FromBody] UserDTO user)
+        public async Task<ActionResult<bool>> Put(int id, [FromBody] EventDTO _event)
         {
             try
             {
-                bool isUpdateUser = await userBL.UpdateUser(user, id);
-                return isUpdateUser;
+                bool isUpdateEvent = await eventBL.UpdateEvent(_event, id);
+                return isUpdateEvent;
             }
             catch (Exception ex)
             {
@@ -66,15 +63,14 @@ namespace OktavaProject.API.Controllers
             }
 
         }
-
-        // DELETE api/<UsersController>/5
+        // DELETE api/<EventController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(int id)
         {
             try
             {
-                bool isRemoveUser = await userBL.RemoveUser(id);
-                return isRemoveUser;
+                bool isRemoveEvent = await eventBL.RemoveEvent(id);
+                return isRemoveEvent;
             }
             catch (Exception ex)
             {

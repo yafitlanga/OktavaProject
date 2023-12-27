@@ -45,9 +45,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("ACADEMIC_DEGREE");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Desc)
                     .HasMaxLength(50)
@@ -58,9 +56,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("ACADEMIC_DEGREE_USERS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.AcademicDegreeId).HasColumnName("ACADEMIC_DEGREE_ID");
 
@@ -83,9 +79,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("CONTACTS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Date)
                     .HasColumnType("date")
@@ -112,9 +106,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("DAYS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Desc)
                     .HasMaxLength(50)
@@ -125,9 +117,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("EVENTS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(50)
@@ -160,9 +150,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("EVENT_UPDATE_USERS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Date)
                     .HasColumnType("date")
@@ -181,9 +169,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("HOURS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Desc)
                     .HasMaxLength(50)
@@ -196,9 +182,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("LESSONS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.DayId).HasColumnName("DAY_ID");
 
@@ -237,9 +221,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("SKILL");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Desc)
                     .HasMaxLength(50)
@@ -250,9 +232,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("SKILL_USERS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.SkillId).HasColumnName("SKILL_ID");
 
@@ -275,9 +255,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("STUDENTS");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(50)
@@ -314,9 +292,7 @@ namespace OktavaProject.DL.Models
             {
                 entity.ToTable("STUDENT_LESSON");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.LessonId).HasColumnName("LESSON_ID");
 

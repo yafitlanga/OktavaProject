@@ -4,6 +4,10 @@ namespace OktavaProject.DL
 {
     public interface IUserDL
     {
-        List<User> GetUsers();
+        Task<List<User>> GetUsers();
+        Task<User> GetUserById(int id);
+        Task<bool> AddUser(User user);
+        Task<bool> UpdateUser(User user, int id); 
+        Task<bool> RemoveUser(int id);
     }
 }
