@@ -28,7 +28,12 @@ namespace OktavaProject.API.Controllers
 
         // GET api/<StudentsController>/5
         [HttpGet("{id}")]
-        
+        public async Task<StudentDTO> Get(int id)
+        {
+            var students = await studentBL.GetStudentById(id);
+            return students;
+        }
+
 
         // POST api/<StudentsController>
         [HttpPost]

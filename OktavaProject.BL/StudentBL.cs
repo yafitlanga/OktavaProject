@@ -26,6 +26,12 @@ namespace OktavaProject.BL
             List<StudentDTO> student2 = mapper.Map<List<StudentDTO>>(student1);
             return student2;
         }
+        public async Task<StudentDTO> GetStudentById(int id)
+        {
+            Student student1 = await studentDL.GetStudentById(id);
+            StudentDTO Student2 = mapper.Map<StudentDTO>(student1);
+            return Student2;
+        }
         public async Task<bool> AddStudent(StudentDTO student)
         {
             Student u = mapper.Map<Student>(student);

@@ -23,6 +23,18 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+        public async Task<Student> GetStudentById(int id)
+        {
+            try
+            {
+                var student = await _OktavaContext.Students.FirstOrDefaultAsync(student => student.Id == id);
+                return student;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<bool> AddStudent(Student student)
         {
             try
