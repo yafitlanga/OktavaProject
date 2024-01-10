@@ -28,9 +28,10 @@ namespace OktavaProject.API.Controllers
 
         // GET api/<ContactsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ContactDTO> Get(int id)
         {
-            return "value";
+            var contact = await contactBL.GetContactById(id);
+            return contact;
         }
 
         // POST api/<ContactsController>

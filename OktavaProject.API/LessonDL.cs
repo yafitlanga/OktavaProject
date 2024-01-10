@@ -16,6 +16,18 @@ namespace OktavaProject.DL
         {
             return await _OktavaContext.Lessons.ToListAsync();
         }
+        public async Task<Lesson> GetLessonsById(int id)
+        {
+            try
+            {
+                var lesson = await _OktavaContext.Lessons.FirstOrDefaultAsync(lesson => lesson.Id == id);
+                return lesson;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<bool> AddLesson(Lesson lesson)
         {
             try

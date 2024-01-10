@@ -9,5 +9,6 @@ namespace OktavaProject.BL
         Task<bool> AddEventUpdateUser(EventUpdateUserDTO eventUpdateUser);
         Task<bool> RemoveEventUpdateUser(int id);
         Task<bool> UpdateEventUpdateUser(EventUpdateUserDTO eventUpdateUser, int id);
+        Task<EventUpdateUserDTO> GetEventUpdateUserById(int id);
     }
 }

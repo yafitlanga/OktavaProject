@@ -27,11 +27,23 @@ namespace OktavaProject.BL
             List<SkillDTO> Skill2 = mapper.Map<List<SkillDTO>>(Skill1);
             return Skill2;
         }
+        public async Task<SkillDTO> GetSkillById(int id)
+        {
+            Skill skill1 = await lookUpDL.GetSkillById(id);
+            SkillDTO skill2 = mapper.Map<SkillDTO>(skill1);
+            return skill2;
+        }
 
         public async Task<List<DayDTO>> GetDay()
         {
             List<Day> Day1 = await lookUpDL.GetDays();
             List<DayDTO> Day2 = mapper.Map<List<DayDTO>>(Day1);
+            return Day2;
+        }
+        public async Task<DayDTO> GetDayById(int id)
+        {
+            Day Day1 = await lookUpDL.GetDayById(id);
+            DayDTO Day2 = mapper.Map<DayDTO>(Day1);
             return Day2;
         }
 
@@ -42,6 +54,12 @@ namespace OktavaProject.BL
             List<HourDTO> Hour2 = mapper.Map<List<HourDTO>>(Hour1);
             return Hour2;
         }
+        public async Task<HourDTO> GetHourById(int id)
+        {
+            Hour Hour1 = await lookUpDL.GetHourById(id);
+            HourDTO Hour2 = mapper.Map<HourDTO>(Hour1);
+            return Hour2;
+        }
 
         public async Task<List<AcademicDegreeDTO>> GetAcademicDegrees()
         {
@@ -49,6 +67,12 @@ namespace OktavaProject.BL
             List<AcademicDegreeDTO> AcademicDegree2 = mapper.Map<List<AcademicDegreeDTO>>(AcademicDegree1);
             return AcademicDegree2;
         }
-
+        public async Task<AcademicDegreeDTO> GetAcademicDegreeById(int id)
+        {
+            AcademicDegree AcademicDegree1 = await lookUpDL.GetAcademicDegreeById(id);
+            AcademicDegreeDTO AcademicDegree2 = mapper.Map<AcademicDegreeDTO>(AcademicDegree1);
+            return AcademicDegree2;
+        }
+      
     }
 }

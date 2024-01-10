@@ -26,6 +26,12 @@ namespace OktavaProject.BL
             List<SkillUserDTO> skillUser2 = mapper.Map<List<SkillUserDTO>>(skillUser1);
             return skillUser2;
         }
+        public async Task<SkillUserDTO> GetSkillUserById(int id)
+        {
+            SkillUser skillUser1 = await skillUserDL.GetSkillUserById(id);
+            SkillUserDTO skillUser2 = mapper.Map<SkillUserDTO>(skillUser1);
+            return skillUser2;
+        }
         public async Task<bool> AddSkillUser(SkillUserDTO skillUser)
         {
             SkillUser s = mapper.Map<SkillUser>(skillUser);

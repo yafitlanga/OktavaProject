@@ -8,6 +8,6 @@ namespace OktavaProject.DL
         Task<bool> AddEvent(Event _event);
         Task<bool> UpdateEvent(Event _event, int id);
         Task<bool> RemoveEvent(int id);
-
+        Task<Event> GetEventById(int id);
     }
 }

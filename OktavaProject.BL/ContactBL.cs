@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using OktavaProjectEntities.DTO;
 using System.Diagnostics.Contracts;
+using Microsoft.Extensions.Logging;
 
 namespace OktavaProject.BL
 {
@@ -24,6 +25,12 @@ namespace OktavaProject.BL
         {
             List<Contact> contact1 = await contactDL.GetContacts();
             List<ContactDTO> contact2 = mapper.Map<List<ContactDTO>>(contact1);
+            return contact2;
+        }
+        public async Task<ContactDTO> GetContactById(int id)
+        {
+            Contact contact1 = await contactDL.GetContactById(id);
+            ContactDTO contact2 = mapper.Map<ContactDTO>(contact1);
             return contact2;
         }
         public async Task<bool> AddContact(ContactDTO Contact)

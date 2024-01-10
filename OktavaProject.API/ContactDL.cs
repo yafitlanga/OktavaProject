@@ -23,6 +23,18 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+        public async Task<Contact> GetContactById(int id)
+        {
+            try
+            {
+                var contact = await _OktavaContext.Contacts.FirstOrDefaultAsync(contact => contact.Id == id);
+                return contact;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<bool> AddContact(Contact contact)
         {
             try

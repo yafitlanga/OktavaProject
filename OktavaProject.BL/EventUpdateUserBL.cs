@@ -28,6 +28,12 @@ namespace OktavaProject.BL
             List<EventUpdateUserDTO> eventUpdateUser2 = mapper.Map<List<EventUpdateUserDTO>>(eventUpdateUser1);
             return eventUpdateUser2;
         }
+        public async Task<EventUpdateUserDTO> GetEventUpdateUserById(int id)
+        {
+            EventUpdateUser eventUpdateUser1 = await eventUpdateUserDL.GetEventUpdateUserById(id);
+            EventUpdateUserDTO eventUpdateUser2 = mapper.Map<EventUpdateUserDTO>(eventUpdateUser1);
+            return eventUpdateUser2;
+        }
         public async Task<bool> AddEventUpdateUser(EventUpdateUserDTO eventUpdateUser)
         {
             EventUpdateUser e = mapper.Map<EventUpdateUser>(eventUpdateUser);

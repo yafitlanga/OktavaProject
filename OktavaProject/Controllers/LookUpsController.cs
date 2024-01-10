@@ -25,12 +25,24 @@ namespace OktavaProject.API.Controllers
             var Skills = await lookUpBL.GetSkills();
             return Skills;
         }
+        [HttpGet("{id}")]
+        public async Task<SkillDTO> GetSkillById(int id)
+        {
+            var skill= await lookUpBL.GetSkillById(id);
+            return skill;
+        }
         [HttpGet]
         [Route("GetDays")]
         public async Task<List<DayDTO>> GetDays()
         {
             var Days = await lookUpBL.GetDay();
             return Days;
+        }
+        [HttpGet("{id}")]
+        public async Task<DayDTO> GetDayById(int id)
+        {
+            var Day = await lookUpBL.GetDayById(id);
+            return Day;
         }
 
         [HttpGet]
@@ -40,6 +52,12 @@ namespace OktavaProject.API.Controllers
             var Hours = await lookUpBL.GetHour();
             return Hours;
         }
+        [HttpGet("{id}")]
+        public async Task<HourDTO> GetHourById(int id)
+        {
+            var Hour = await lookUpBL.GetHourById(id);
+            return Hour;
+        }
         [HttpGet]
         [Route("GetAcademicDegrees")]
         public async Task<List<AcademicDegreeDTO>> GetAcademicDegrees()
@@ -48,6 +66,12 @@ namespace OktavaProject.API.Controllers
             return AcademicDegrees;
         }
 
+        [HttpGet("{id}")]
+        public async Task<AcademicDegreeDTO> GetAcademicDegreeById(int id)
+        {
+            var AcademicDegree = await lookUpBL.GetAcademicDegreeById(id);
+            return AcademicDegree;
+        }
         // GET api/<ValuesController>/5
         [HttpGet("{id}")]
         public string Get(int id)

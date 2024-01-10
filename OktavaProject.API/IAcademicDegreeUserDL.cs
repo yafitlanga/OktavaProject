@@ -9,5 +9,6 @@ namespace OktavaProject.DL
         Task<bool> UpdateAcademicDegreeUsers(AcademicDegreeUser AcademicDegreeUser, int id);
         Task<bool> RemoveAcademicDegreeUser(int id);
         Task<bool> AddAcademicDegreeUser(AcademicDegreeUser _AcademicDegreeUser);
+        Task<AcademicDegree> GetEventById(int id);
     }
 }

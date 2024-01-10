@@ -23,6 +23,18 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+        public async Task<EventUpdateUser> GetEventUpdateUserById(int id)
+        {
+            try
+            {
+                var eventUpdateUser = await _OktavaContext.EventUpdateUsers.FirstOrDefaultAsync(eventUpdateUser => eventUpdateUser.Id == id);
+                return eventUpdateUser;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<bool> AddEventUpdateUser(EventUpdateUser eventUpdateUser)
         {
             try

@@ -23,6 +23,18 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+        public async Task<SkillUser> GetSkillUserById(int id)
+        {
+            try
+            {
+                var skillUser = await _OktavaContext.SkillUsers.FirstOrDefaultAsync(skillUser => skillUser.Id == id);
+                return skillUser;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<bool> AddSkillUser(SkillUser skillUser)
         {
             try

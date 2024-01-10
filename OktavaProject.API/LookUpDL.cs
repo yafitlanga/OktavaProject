@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace OktavaProject.DL
 {
+  
     public class LookUpDL:ILookUpDL
     {
         OktavaDBContext _OktavaContext = new OktavaDBContext();
@@ -24,6 +25,30 @@ namespace OktavaProject.DL
             }
 
         }
+        public async Task<Skill> GetSkillById(int id)
+        {
+            try
+            {
+                var Skill = await _OktavaContext.Skills.FirstOrDefaultAsync(Skill => Skill.Id == id);
+                return Skill;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<Day> GetDayById(int id)
+        {
+            try
+            {
+                var Day = await _OktavaContext.Days.FirstOrDefaultAsync(Day => Day.Id == id);
+                return Day;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<List<Day>> GetDays()
         {
             try
@@ -36,6 +61,18 @@ namespace OktavaProject.DL
                 throw ex;
             }
 
+        }
+        public async Task<AcademicDegree> GetAcademicDegreeById(int id)
+        {
+            try
+            {
+                var AcademicDegree = await _OktavaContext.AcademicDegrees.FirstOrDefaultAsync(AcademicDegree => AcademicDegree.Id == id);
+                return AcademicDegree;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public async Task<List<AcademicDegree>> GetAcademicDegrees()
         {
@@ -64,8 +101,20 @@ namespace OktavaProject.DL
             }
 
         }
+        public async Task<Hour> GetHourById(int id)
+        {
+            try
+            {
+                var Hour = await _OktavaContext.Hours.FirstOrDefaultAsync(Hour => Hour.Id == id);
+                return Hour;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
-        
+
 
     }
 }

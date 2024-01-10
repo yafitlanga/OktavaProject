@@ -27,9 +27,10 @@ namespace OktavaProject.API.Controllers
 
         // GET api/<EventUpdateUsersController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<EventUpdateUserDTO> Get(int id)
         {
-            return "value";
+            var eventUpdateUser = await eventUpdateUserBL.GetEventUpdateUserById(id);
+            return eventUpdateUser;
         }
 
         // POST api/<EventUpdateUsersController>

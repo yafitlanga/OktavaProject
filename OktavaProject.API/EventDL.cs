@@ -23,6 +23,18 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+        public async Task<Event> GetEventById(int id)
+        {
+            try
+            {
+                var events = await _OktavaContext.Events.FirstOrDefaultAsync(events => events.Id == id);
+                return events;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<bool> AddEvent(Event _event)
         {
             try

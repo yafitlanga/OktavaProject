@@ -8,6 +8,7 @@ namespace OktavaProject.DL
         Task<bool> AddContact(Contact contact);
         Task<bool> UpdateContact(Contact contact, int id);
         Task<bool> RemoveContact(int id);
-
-    }
+        Task<Contact> GetContactById(int id);
+        
+        }
 }

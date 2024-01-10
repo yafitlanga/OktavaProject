@@ -28,10 +28,12 @@ namespace OktavaProject.API.Controllers
 
         // GET api/<EventController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<EventDTO> Get(int id)
         {
-            return "value";
+            var events= await eventBL.GetEventById(id);
+            return events;
         }
+
 
         // POST api/<EventController>
         [HttpPost]

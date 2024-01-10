@@ -8,6 +8,7 @@ namespace OktavaProject.DL
         Task<bool> AddSkillUser(SkillUser skillUser);
         Task<bool> RemoveSkillUser(int id);
         Task<bool> UpdateSkillUser(SkillUser skillUser, int id);
+        Task<SkillUser> GetSkillUserById(int id);
 
     }
 }

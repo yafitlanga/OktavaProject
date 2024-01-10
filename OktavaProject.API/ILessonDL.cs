@@ -8,5 +8,6 @@ namespace OktavaProject.DL
         Task<bool> AddLesson(Lesson lesson);
         Task<bool> UpdateLesson(Lesson lesson, int id);
         Task<bool> RemoveLesson(int id);
+        Task<Lesson> GetLessonsById(int id);
     }
 }
