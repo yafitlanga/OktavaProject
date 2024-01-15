@@ -3,7 +3,7 @@ using OktavaProject.BL;
 using OktavaProject.DL.Models;
 using OktavaProjectEntities.DTO;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+//For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace OktavaProject.API.Controllers
 {
@@ -11,7 +11,7 @@ namespace OktavaProject.API.Controllers
     [ApiController]
     public class LookUpsController : ControllerBase
     {
-        // GET: api/<ValuesController>
+        //GET: api/<ValuesController>
         private ILookUpBL lookUpBL;
         public LookUpsController(ILookUpBL lookUpBL)
         {
@@ -25,10 +25,13 @@ namespace OktavaProject.API.Controllers
             var Skills = await lookUpBL.GetSkills();
             return Skills;
         }
-        [HttpGet("{id}")]
+
+
+        [HttpGet]
+        [Route("GetSkill")]
         public async Task<SkillDTO> GetSkillById(int id)
         {
-            var skill= await lookUpBL.GetSkillById(id);
+            var skill = await lookUpBL.GetSkillById(id);
             return skill;
         }
         [HttpGet]
@@ -38,7 +41,9 @@ namespace OktavaProject.API.Controllers
             var Days = await lookUpBL.GetDay();
             return Days;
         }
-        [HttpGet("{id}")]
+
+        [HttpGet]
+        [Route("GetDay")]
         public async Task<DayDTO> GetDayById(int id)
         {
             var Day = await lookUpBL.GetDayById(id);
@@ -47,12 +52,14 @@ namespace OktavaProject.API.Controllers
 
         [HttpGet]
         [Route("GetHours")]
+
         public async Task<List<HourDTO>> GetHours()
         {
             var Hours = await lookUpBL.GetHour();
             return Hours;
         }
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("GetHour")]
         public async Task<HourDTO> GetHourById(int id)
         {
             var Hour = await lookUpBL.GetHourById(id);
@@ -66,18 +73,14 @@ namespace OktavaProject.API.Controllers
             return AcademicDegrees;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("GetAcademicDegree")]
         public async Task<AcademicDegreeDTO> GetAcademicDegreeById(int id)
         {
             var AcademicDegree = await lookUpBL.GetAcademicDegreeById(id);
             return AcademicDegree;
         }
-        // GET api/<ValuesController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+
 
     }
 }

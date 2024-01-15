@@ -17,7 +17,7 @@ namespace OktavaProject.API.Controllers
         
         public EventsController(IEventBL eventBL)
         {
-            this.eventBL = eventBL;
+            this.eventBL = eventBL; 
         }
         [HttpGet]
         public async Task<List<EventDTO>> GetEvents()

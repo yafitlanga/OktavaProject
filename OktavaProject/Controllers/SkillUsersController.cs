@@ -28,7 +28,7 @@ namespace OktavaProject.API.Controllers
 
         // GET api/<SkillUsersController>/5
         [HttpGet("{id}")]
-        public async Task<SkillUserDTO> Get(int id)
+        public async Task<SkillUserDTO> GetSkillUser(int id)
         {
             var skillUser = await skillUserBL.GetSkillUserById(id);
             return skillUser;
