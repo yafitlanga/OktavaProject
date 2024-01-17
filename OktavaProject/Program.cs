@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using OktavaProject.BL;
 using OktavaProject.DL;
 using OktavaProject.DL.Models;
@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(MyMapper));
+builder.Services.AddCors();// אפשור גישה לצד לקוח
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -34,6 +35,8 @@ builder.Services.AddScoped<IStudentLessonBL, StudentLessonBL>();
 builder.Services.AddScoped<IStudentLessonDL, StudentLessonDL>();
 var app = builder.Build();
 
+app.UseCors(options => 
+    options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 // Configure the HTTP request pipeline
 //regards to Yafit
 if (app.Environment.IsDevelopment())

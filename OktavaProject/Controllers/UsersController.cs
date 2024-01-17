@@ -28,10 +28,21 @@ namespace OktavaProject.API.Controllers
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
-        public async Task<UserDTO> Get(int id)
+        public async Task<UserDTO> GetUserById(string userId)
         {
-            var users = await userBL.GetUserById(id);
-            return users;
+            var user = await userBL.GetUserById(userId);
+            return user;
+        }
+
+        [HttpGet("Login")]
+        public async Task<ActionResult<UserDTO>> Login(string userId, string password)
+        {
+            var userDTO = await userBL.Login(userId, password);
+            if (userDTO == null)
+            {
+                return NotFound();
+            }
+            return Ok(userDTO);
         }
 
         // POST api/<UsersController>
@@ -69,7 +80,7 @@ namespace OktavaProject.API.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Delete(int id)
+        public async Task<ActionResult<bool>> DeleteUser(int id)
         {
             try
             {

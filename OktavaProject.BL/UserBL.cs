@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using OktavaProject.DL;
 using OktavaProject.DL.Models;
+using OktavaProjectEntities;
 using OktavaProjectEntities.DTO;
 using System;
 using System.Collections.Generic;
@@ -27,11 +28,17 @@ namespace OktavaProject.BL
             List<UserDTO> user2 = mapper.Map<List<UserDTO>>(user1);
             return user2;
         }
-        public async Task<UserDTO> GetUserById(int id)
+        public async Task<UserDTO> GetUserById(string userId)
         {
-            User user1 = await userDL.GetUserById(id);
+            User user1 = await userDL.GetUserById(userId);
+            if (user1 == null) { return null; }
             UserDTO user2 = mapper.Map<UserDTO>(user1);
             return user2;
+        }
+        public async Task<UserDTO> Login(string userId, string password)
+        {
+            var user = await userDL.Login(userId, password);
+            return mapper.Map<UserDTO>(user);
         }
         public async Task<bool> AddUser(UserDTO user)
         {
@@ -50,6 +57,7 @@ namespace OktavaProject.BL
             bool isRemove = await userDL.RemoveUser(id);
             return isRemove;
         }
+       
     }
 }
 
