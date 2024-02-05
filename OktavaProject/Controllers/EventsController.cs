@@ -42,7 +42,7 @@ namespace OktavaProject.API.Controllers
             try
             {
                 bool isAddEvent = await eventBL.AddEvent(_event);
-                return isAddEvent;
+                return Ok(isAddEvent);
             }
             catch (Exception ex)
             {

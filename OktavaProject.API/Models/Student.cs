@@ -5,6 +5,11 @@ namespace OktavaProject.DL.Models
 {
     public partial class Student
     {
+        public Student()
+        {
+            StudentLessons = new HashSet<StudentLesson>();
+        }
+
         public int Id { get; set; }
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
@@ -14,5 +19,7 @@ namespace OktavaProject.DL.Models
         public string? Mail { get; set; }
         public string Address { get; set; } = null!;
         public string Phone { get; set; } = null!;
+
+        public virtual ICollection<StudentLesson> StudentLessons { get; set; }
     }
 }

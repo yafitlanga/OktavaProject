@@ -296,7 +296,7 @@ namespace OktavaProject.DL.Models
 
                 entity.Property(e => e.LessonId).HasColumnName("LESSON_ID");
 
-                entity.Property(e => e.UserId).HasColumnName("USER_ID");
+                entity.Property(e => e.StudentId).HasColumnName("STUDENT_ID");
 
                 entity.HasOne(d => d.Lesson)
                     .WithMany(p => p.StudentLessons)
@@ -304,11 +304,10 @@ namespace OktavaProject.DL.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__STUDENT_L__LESSO__48CFD27E");
 
-                entity.HasOne(d => d.User)
+                entity.HasOne(d => d.Student)
                     .WithMany(p => p.StudentLessons)
-                    .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__STUDENT_L__USER___47DBAE45");
+                    .HasForeignKey(d => d.StudentId)
+                    .HasConstraintName("FK_STUDENT_LESSON_STUDENTS");
             });
 
             modelBuilder.Entity<User>(entity =>

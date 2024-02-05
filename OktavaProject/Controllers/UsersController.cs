@@ -20,27 +20,30 @@ namespace OktavaProject.API.Controllers
 
         // GET: api/<UsersController>
         [HttpGet]
+        [Route("GetUsers")]
         public async Task<List<UserDTO>> GetUsers()
         {
-            var users =await userBL.GetUsers(); 
+            var users = await userBL.GetUsers(); 
             return users;
         }
 
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
+        
         public async Task<UserDTO> GetUserById(string userId)
         {
             var user = await userBL.GetUserById(userId);
             return user;
         }
 
-        [HttpGet("Login")]
+        [HttpGet]
+        [Route("Login")]
         public async Task<ActionResult<UserDTO>> Login(string userId, string password)
         {
             var userDTO = await userBL.Login(userId, password);
             if (userDTO == null)
             {
-                return NotFound();
+                return NoContent();
             }
             return Ok(userDTO);
         }
@@ -53,7 +56,7 @@ namespace OktavaProject.API.Controllers
             try
             {
                 bool isAddUser = await userBL.AddUser(user);
-                return isAddUser;
+                return Ok(isAddUser);
             }
             catch (Exception ex)
             {
@@ -64,7 +67,7 @@ namespace OktavaProject.API.Controllers
 
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> Put(int id, [FromBody] UserDTO user)
+        public async Task<ActionResult<bool>> UpdateUser(int id, [FromBody] UserDTO user)
         {
             try
             {
@@ -80,6 +83,7 @@ namespace OktavaProject.API.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
+
         public async Task<ActionResult<bool>> DeleteUser(int id)
         {
             try

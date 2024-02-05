@@ -11,7 +11,6 @@ namespace OktavaProject.DL.Models
             Events = new HashSet<Event>();
             Lessons = new HashSet<Lesson>();
             SkillUsers = new HashSet<SkillUser>();
-            StudentLessons = new HashSet<StudentLesson>();
         }
 
         public int Id { get; set; }
@@ -31,6 +30,5 @@ namespace OktavaProject.DL.Models
         public virtual ICollection<Event> Events { get; set; }
         public virtual ICollection<Lesson> Lessons { get; set; }
         public virtual ICollection<SkillUser> SkillUsers { get; set; }
-        public virtual ICollection<StudentLesson> StudentLessons { get; set; }
     }
 }

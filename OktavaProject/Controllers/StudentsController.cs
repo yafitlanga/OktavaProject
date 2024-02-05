@@ -42,7 +42,7 @@ namespace OktavaProject.API.Controllers
             try
             {
                 bool isAddStudent = await studentBL.AddStudent(student);
-                return isAddStudent;
+                return Ok(isAddStudent);
             }
             catch (Exception ex)
             {

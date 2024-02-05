@@ -34,9 +34,7 @@ namespace OktavaProject.API.Controllers
             return skillUser;
         }
 
-
-        // POST api/<SkillUsersController>
-        [HttpPost]
+                [HttpPost]
         public async Task<ActionResult<bool>> AddSkillUser([FromBody] SkillUserDTO skillUser)
         {
             try

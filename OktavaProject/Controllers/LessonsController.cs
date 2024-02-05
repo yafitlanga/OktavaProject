@@ -41,7 +41,7 @@ namespace OktavaProject.API.Controllers
             try
             {
                 bool isAddLesson = await lessonBL.AddLessons(lesson);
-                return isAddLesson;
+                return Ok(isAddLesson);
             }
             catch (Exception ex)
             {
