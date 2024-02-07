@@ -55,7 +55,7 @@ namespace OktavaProject.DL
                 StudentLesson studentLessonToUpdate = await _OktavaContext.StudentLessons.FirstOrDefaultAsync(x => x.Id == id);
                 if (studentLessonToUpdate != null)
                 {
-                    studentLessonToUpdate.UserId = studentLessonToUpdate.UserId;
+                    studentLessonToUpdate.StudentId = studentLessonToUpdate.StudentId;
                     studentLessonToUpdate.LessonId = studentLessonToUpdate.LessonId;
                     _OktavaContext.SaveChanges(); 
                     return true;

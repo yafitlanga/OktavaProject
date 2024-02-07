@@ -73,6 +73,12 @@ namespace OktavaProject.BL
             AcademicDegreeDTO AcademicDegree2 = mapper.Map<AcademicDegreeDTO>(AcademicDegree1);
             return AcademicDegree2;
         }
-      
+
+        public async Task<List<SkillDTO>> GetSkillsByUserId(int userId)
+        {
+            List<Skill> skills1 = await lookUpDL.GetSkillsByUserId(userId);
+            List<SkillDTO> skills2 = mapper.Map<List<SkillDTO>>(skills1);
+            return skills2;
+        }
     }
 }

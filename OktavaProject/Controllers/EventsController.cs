@@ -20,6 +20,7 @@ namespace OktavaProject.API.Controllers
             this.eventBL = eventBL; 
         }
         [HttpGet]
+        [Route("GetEvents")]
         public async Task<List<EventDTO>> GetEvents()
         {
             var events = await eventBL.GetEvents();

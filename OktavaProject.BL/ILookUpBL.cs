@@ -14,7 +14,7 @@ namespace OktavaProject.BL
         Task<HourDTO> GetHourById(int id);
         Task<DayDTO> GetDayById(int id);
         Task<SkillDTO> GetSkillById(int id);
-
-
+        Task<List<SkillDTO>> GetSkillsByUserId(int userId);
+        
     }
 }

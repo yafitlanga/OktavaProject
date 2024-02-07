@@ -13,7 +13,7 @@ namespace OktavaProjectEntities.DTO
         public int UserId { get; set; }
         public int SkillId { get; set; }
 
-        public virtual Skill Skill { get; set; } = null!;
-        public virtual Student User { get; set; } = null!;
+        public virtual SkillDTO Skill { get; set; } = null!;
+        //public virtual StudentDTO User { get; set; } = null!;
     }
 }

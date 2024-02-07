@@ -114,7 +114,17 @@ namespace OktavaProject.DL
             }
         }
 
-
-
+        public async Task<List<Skill>> GetSkillsByUserId(int userId)
+        {
+            try
+            {
+                var skills = await _OktavaContext.SkillUsers.Where(s => s.UserId == userId).Select(s1 => s1.Skill).ToListAsync();
+                return skills;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

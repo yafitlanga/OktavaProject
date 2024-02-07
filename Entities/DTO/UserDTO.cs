@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OktavaProject.DL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,5 +21,6 @@ namespace OktavaProjectEntities.DTO
         public string Address { get; set; } = null!;
         public int Level { get; set; }
         public string Password { get; set; } = null!;
+        public virtual ICollection<SkillUserDTO> SkillUsers { get; set; }
     }
 }

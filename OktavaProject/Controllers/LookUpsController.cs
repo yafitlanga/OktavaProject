@@ -34,6 +34,15 @@ namespace OktavaProject.API.Controllers
             var skill = await lookUpBL.GetSkillById(id);
             return skill;
         }
+
+        [HttpGet]
+        [Route("GetSkillsByUserId")]
+        public async Task<List<SkillDTO>> GetSkillsByUserId(int userId)
+        {
+            var skills = await lookUpBL.GetSkillsByUserId(userId);
+            return skills;
+        }
+
         [HttpGet]
         [Route("GetDays")]
         public async Task<List<DayDTO>> GetDays()

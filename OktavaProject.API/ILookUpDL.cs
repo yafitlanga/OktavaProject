@@ -12,5 +12,6 @@ namespace OktavaProject.DL
         Task<Day> GetDayById(int id);
         Task<AcademicDegree> GetAcademicDegreeById(int id);
         Task<Hour> GetHourById(int id);
+        Task<List<Skill>> GetSkillsByUserId(int userId);
     }
 }

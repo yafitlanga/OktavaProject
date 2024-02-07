@@ -16,7 +16,13 @@ namespace OktavaProject.DL
         {
             try
             {
-                var users = await _OktavaContext.Users.ToListAsync();
+                //var users = await _OktavaContext.Users.Select(s => s).Include(user => user.SkillUsers).
+                //            ThenInclude(skill => skill.Skill).
+                //            Include(user => user.AcademicDegreeUsers).
+                //            ThenInclude(academicDegree => academicDegree.AcademicDegree).ToListAsync();
+                var users = await _OktavaContext.Users.Select(s => s).
+                          Include(user => user.AcademicDegreeUsers).
+                          ThenInclude(academicDegree => academicDegree.AcademicDegree).ToListAsync();
                 return users;
             }
             catch (Exception ex)
