@@ -15,7 +15,7 @@ namespace OktavaProject.DL
         {
             return await _OktavaContext.AcademicDegreeUsers.ToListAsync();
         }
-        public async Task<AcademicDegree> GetEventById(int id)
+        public async Task<AcademicDegree> GetByAcademicDegreeId(int id)
         {
             try
             {

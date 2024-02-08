@@ -22,5 +22,7 @@ namespace OktavaProjectEntities.DTO
         public int Level { get; set; }
         public string Password { get; set; } = null!;
         public virtual ICollection<SkillUserDTO> SkillUsers { get; set; }
+        public virtual ICollection<AcademicDegreeUserDTO> AcademicDegreeUsers { get; set; }
+
     }
 }
