@@ -21,8 +21,8 @@ namespace OktavaProjectEntities.DTO
         public string Address { get; set; } = null!;
         public int Level { get; set; }
         public string Password { get; set; } = null!;
-        public virtual ICollection<SkillUserDTO> SkillUsers { get; set; }
-        public virtual ICollection<AcademicDegreeUserDTO> AcademicDegreeUsers { get; set; }
+        public virtual ICollection<SkillUserDTO> ?SkillUsers { get; set; }
+        public virtual ICollection<AcademicDegreeUserDTO> ?AcademicDegreeUsers { get; set; }
 
     }
 }

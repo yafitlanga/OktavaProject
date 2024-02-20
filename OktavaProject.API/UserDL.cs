@@ -16,17 +16,11 @@ namespace OktavaProject.DL
         {
             try
             {
-                //var users = await _OktavaContext.Users.Select(s => s).
-                //            Include(user => user.SkillUsers).
-                //            ThenInclude(skill => skill.Skill).ToListAsync();
                 var users = await _OktavaContext.Users.Select(s => s).
                             Include(user => user.SkillUsers).
                             ThenInclude(skill => skill.Skill).
                             Include(user => user.AcademicDegreeUsers).
                             ThenInclude(academicDegree => academicDegree.AcademicDegree).ToListAsync();
-                //var users = await _OktavaContext.Users.Select(s => s).
-                //         Include(user => user.AcademicDegreeUsers).
-                //         ThenInclude(academicDegree => academicDegree.AcademicDegree).ToListAsync();
                 return users;
             }
             catch (Exception ex)
@@ -64,13 +58,13 @@ namespace OktavaProject.DL
             }
 
         }
-        public async Task<bool> AddUser(User user)
+        public async Task<int> AddUser(User user)
         {
             try
             {
                 await _OktavaContext.Users.AddAsync(user);
                 _OktavaContext.SaveChanges();
-                return true;
+                return user.Id;
             }
             catch (Exception ex)
             {

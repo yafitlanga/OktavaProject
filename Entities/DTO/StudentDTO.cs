@@ -17,5 +17,7 @@ namespace OktavaProjectEntities.DTO
         public string? Mail { get; set; }
         public string Address { get; set; } = null!;
         public string Phone { get; set; } = null!;
+
+        public virtual ICollection<LessonDTO> StudentLessons { get; set; }
     }
 }

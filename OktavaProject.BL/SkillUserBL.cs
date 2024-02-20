@@ -32,9 +32,9 @@ namespace OktavaProject.BL
             SkillUserDTO skillUser2 = mapper.Map<SkillUserDTO>(skillUser1);
             return skillUser2;
         }
-        public async Task<bool> AddSkillUser(SkillUserDTO skillUser)
+        public async Task<bool> AddSkillUser(SkillUserDTO[] skillsUser)
         {
-            SkillUser s = mapper.Map<SkillUser>(skillUser);
+            SkillUser[] s = mapper.Map<SkillUser[]>(skillsUser);
             bool isAdd = await skillUserDL.AddSkillUser(s);
             return isAdd;
         }
@@ -47,6 +47,12 @@ namespace OktavaProject.BL
         public async Task<bool> RemoveSkillUser(int id)
         {
             bool isRemove = await skillUserDL.RemoveSkillUser(id);
+            return isRemove;
+        }
+
+        public async Task<bool> RemoveSkillUserByUserId(int id)
+        {
+            bool isRemove = await skillUserDL.RemoveSkillUserByUserId(id);
             return isRemove;
         }
     }

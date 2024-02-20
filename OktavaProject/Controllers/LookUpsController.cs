@@ -83,7 +83,7 @@ namespace OktavaProject.API.Controllers
         }
 
         [HttpGet]
-        [Route("GetAcademicDegree")]
+        [Route("{id}")]
         public async Task<AcademicDegreeDTO> GetAcademicDegreeById(int id)
         {
             var AcademicDegree = await lookUpBL.GetAcademicDegreeById(id);

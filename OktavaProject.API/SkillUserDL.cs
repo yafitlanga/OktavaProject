@@ -35,11 +35,11 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
-        public async Task<bool> AddSkillUser(SkillUser skillUser)
+        public async Task<bool> AddSkillUser(SkillUser[] skillsUser)
         {
             try
             {
-                await _OktavaContext.SkillUsers.AddAsync(skillUser);
+                await _OktavaContext.SkillUsers.AddRangeAsync(skillsUser);
                 _OktavaContext.SaveChanges();
                 return true;
             }
@@ -79,6 +79,28 @@ namespace OktavaProject.DL
                 if (skillUserToRemove != null)
                 {
                     _OktavaContext.SkillUsers.Remove(skillUserToRemove);
+                    _OktavaContext.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<bool> RemoveSkillUserByUserId(int id)
+        {
+            try
+            {
+                SkillUser[] skillsUserToRemove = await _OktavaContext.SkillUsers.Where(x => x.UserId == id).ToArrayAsync();
+                if (skillsUserToRemove.Length > 0)
+                {
+                    _OktavaContext.SkillUsers.RemoveRange(skillsUserToRemove);
                     _OktavaContext.SaveChanges();
                     return true;
                 }

@@ -7,7 +7,7 @@ namespace OktavaProject.BL
     {
         Task<List<UserDTO>> GetUsers();
         Task<UserDTO> GetUserById(string userId);
-        Task<bool> AddUser(UserDTO user);
+        Task<int> AddUser(UserDTO user);
         Task<bool> UpdateUser(UserDTO user, int id);
         Task<bool> RemoveUser(int id);
         Task<UserDTO> Login(string userId, string password);

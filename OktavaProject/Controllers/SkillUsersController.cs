@@ -34,12 +34,12 @@ namespace OktavaProject.API.Controllers
             return skillUser;
         }
 
-                [HttpPost]
-        public async Task<ActionResult<bool>> AddSkillUser([FromBody] SkillUserDTO skillUser)
+        [HttpPost]
+        public async Task<ActionResult<bool>> AddSkillUser([FromBody] SkillUserDTO[] skillsUser)
         {
             try
             {
-                bool isAddSkillUser = await skillUserBL.AddSkillUser(skillUser);
+                bool isAddSkillUser = await skillUserBL.AddSkillUser(skillsUser);
                 return isAddSkillUser;
             }
             catch (Exception ex)
@@ -56,6 +56,20 @@ namespace OktavaProject.API.Controllers
             {
                 bool isUpdateSkillUser = await skillUserBL.UpdateSkillUser(skillUser, id);
                 return isUpdateSkillUser;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpDelete("RemoveSkillUserByUserId/{id}")]
+        public async Task<ActionResult<bool>> RemoveSkillUserByUserId(int id)
+        {
+            try
+            {
+                bool isRemoveSkillUser = await skillUserBL.RemoveSkillUserByUserId(id);
+                return isRemoveSkillUser;
             }
             catch (Exception ex)
             {

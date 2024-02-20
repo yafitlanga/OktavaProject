@@ -51,12 +51,12 @@ namespace OktavaProject.API.Controllers
         // POST api/<UsersController>
         [HttpPost]
         [Route("AddUser")]
-        public async Task<ActionResult<bool>> AddUser([FromBody] UserDTO user)
+        public async Task<ActionResult<int>> AddUser([FromBody] UserDTO user)
         {
             try
             {
-                bool isAddUser = await userBL.AddUser(user);
-                return Ok(isAddUser);
+                int userId = await userBL.AddUser(user);
+                return Ok(userId);
             }
             catch (Exception ex)
             {

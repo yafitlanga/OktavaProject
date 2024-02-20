@@ -40,11 +40,11 @@ namespace OktavaProject.BL
             var user = await userDL.Login(userId, password);
             return mapper.Map<UserDTO>(user);
         }
-        public async Task<bool> AddUser(UserDTO user)
+        public async Task<int> AddUser(UserDTO user)
         {
             User u = mapper.Map<User>(user);
-            bool isAdd = await userDL.AddUser(u);
-            return isAdd;
+            int userId = await userDL.AddUser(u);
+            return userId;
         }
         public async Task<bool> UpdateUser(UserDTO user, int id)
         {

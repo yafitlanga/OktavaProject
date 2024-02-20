@@ -11,6 +11,6 @@ namespace OktavaProjectEntities.DTO
         public int Id { get; set; }
         public int UserId { get; set; }
         public int AcademicDegreeId { get; set; }
-        public virtual AcademicDegreeDTO AcademicDegree { get; set; } = null!;
+        public virtual AcademicDegreeDTO ?AcademicDegree { get; set; } = null!;
     }
 }
