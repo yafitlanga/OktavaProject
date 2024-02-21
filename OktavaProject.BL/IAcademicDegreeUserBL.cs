@@ -1,4 +1,5 @@
-﻿using OktavaProject.DL.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using OktavaProject.DL.Models;
 using OktavaProjectEntities.DTO;
 
 namespace OktavaProject.BL
@@ -9,5 +10,6 @@ namespace OktavaProject.BL
         Task<bool> RemoveAcademicDegreeUser(int id);
         Task<bool> UpdateAcademicDegreeUser(AcademicDegreeUserDTO AcademicDegreeUser, int id);
         Task<bool> AddAcademicDegreeUser(AcademicDegreeUserDTO _AcademicDegreeUser);
+        Task<bool> RemoveAcademicDegreeUserByUserId(int id);
     }
 }

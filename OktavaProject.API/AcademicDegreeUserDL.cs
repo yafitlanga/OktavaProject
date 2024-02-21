@@ -86,5 +86,30 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+        public async Task<bool> RemoveAcademicDegreeUserByUserId(int id)
+        {
+            try
+            {
+                AcademicDegreeUser[] academicDegreesUserToRemove = await _OktavaContext.AcademicDegreeUsers
+                    .Where(x => x.UserId == id)
+                    .ToArrayAsync();
+
+                if (academicDegreesUserToRemove.Length > 0)
+                {
+                    _OktavaContext.AcademicDegreeUsers.RemoveRange(academicDegreesUserToRemove);
+                    await _OktavaContext.SaveChangesAsync();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

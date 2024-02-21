@@ -54,6 +54,20 @@ namespace OktavaProject.API.Controllers
             }
         }
 
+        [HttpDelete("RemoveAcademicDegreeUserByUserId/{id}")]
+        public async Task<ActionResult<bool>> RemoveAcademicDegreeUserByUserId(int id)
+        {
+            try
+            {
+                bool isRemoveAcademicDegreeUser = await academicDegreeUserBL.RemoveAcademicDegreeUserByUserId(id);
+                return isRemoveAcademicDegreeUser;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
         // DELETE api/<ContactsController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(int id)

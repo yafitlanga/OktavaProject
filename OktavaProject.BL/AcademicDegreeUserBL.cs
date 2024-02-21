@@ -43,5 +43,10 @@ namespace OktavaProject.BL
             bool isRemove = await academicDegreeUserDL.RemoveAcademicDegreeUser(id);
             return isRemove;
         }
+        public async Task<bool> RemoveAcademicDegreeUserByUserId(int id)
+        {
+            bool isRemove = await academicDegreeUserDL.RemoveAcademicDegreeUserByUserId(id);
+            return isRemove;
+        }
     }
 }
