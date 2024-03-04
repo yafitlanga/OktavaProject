@@ -18,6 +18,8 @@ namespace OktavaProjectEntities.DTO
         public string Address { get; set; } = null!;
         public string Phone { get; set; } = null!;
 
-        public virtual ICollection<LessonDTO> StudentLessons { get; set; }
+        public virtual ICollection<StudentLessonDTO> ?StudentLessons { get; set; }
+
+
     }
 }

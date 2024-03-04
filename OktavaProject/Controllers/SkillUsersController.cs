@@ -63,7 +63,8 @@ namespace OktavaProject.API.Controllers
             }
         }
 
-        [HttpDelete("RemoveSkillUserByUserId/{id}")]
+        [HttpDelete]
+        [Route("RemoveSkillUserByUserId/{id}")]
         public async Task<ActionResult<bool>> RemoveSkillUserByUserId(int id)
         {
             try

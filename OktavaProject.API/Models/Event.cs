@@ -11,8 +11,8 @@ namespace OktavaProject.DL.Models
         public string Hour { get; set; } = null!;
         public double? Payment { get; set; }
         public DateTime Date { get; set; }
-        public int ResponsibleUserId { get; set; }
+        public int? ResponsibleUserId { get; set; }
 
-        public virtual User ResponsibleUser { get; set; } = null!;
+        public virtual User? ResponsibleUser { get; set; }
     }
 }

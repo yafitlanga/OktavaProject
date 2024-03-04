@@ -142,7 +142,6 @@ namespace OktavaProject.DL.Models
                 entity.HasOne(d => d.ResponsibleUser)
                     .WithMany(p => p.Events)
                     .HasForeignKey(d => d.ResponsibleUserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__EVENTS__RESPONSI__31EC6D26");
             });
 
@@ -213,7 +212,6 @@ namespace OktavaProject.DL.Models
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Lessons)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__LESSONS__USER_ID__4222D4EF");
             });
 

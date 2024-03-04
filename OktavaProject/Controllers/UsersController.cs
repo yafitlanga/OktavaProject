@@ -62,7 +62,6 @@ namespace OktavaProject.API.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-
         }
 
         // PUT api/<UsersController>/5
@@ -83,7 +82,6 @@ namespace OktavaProject.API.Controllers
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]
-
         public async Task<ActionResult<bool>> DeleteUser(int id)
         {
             try

@@ -39,7 +39,7 @@ namespace OktavaProject.API.Controllers
             }
         }
 
-        // PUT api/<ContactsController>/5
+        // PUT api/<AcademicDegreeUsersController>/5
         [HttpPut("{id}")]
         public async Task<ActionResult<bool>> Put(int id, [FromBody] AcademicDegreeUserDTO AcademicDegreeUser)
         {
@@ -54,7 +54,8 @@ namespace OktavaProject.API.Controllers
             }
         }
 
-        [HttpDelete("RemoveAcademicDegreeUserByUserId/{id}")]
+        [HttpDelete]
+        [Route("RemoveAcademicDegreeUserByUserId/{id}")]
         public async Task<ActionResult<bool>> RemoveAcademicDegreeUserByUserId(int id)
         {
             try
@@ -68,7 +69,7 @@ namespace OktavaProject.API.Controllers
             }
         }
 
-        // DELETE api/<ContactsController>/5
+        // DELETE api/<AcademicDegreeUsersController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(int id)
         {

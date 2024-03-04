@@ -15,11 +15,16 @@ namespace OktavaProject.BL
     public class UserBL : IUserBL
     {
         private IUserDL userDL;
+        private ISkillUserDL skillUserDL;
+        private IAcademicDegreeUserDL academicDegreeUserDL;
         private IMapper mapper;
 
-        public UserBL(IUserDL userDL, IMapper _mapper)
+        public UserBL(IUserDL userDL,ISkillUserDL skillUserDL, 
+            IAcademicDegreeUserDL academicDegreeUserDL, IMapper _mapper)
         {
             this.userDL = userDL;
+            this.skillUserDL = skillUserDL;
+            this.academicDegreeUserDL = academicDegreeUserDL;
             this.mapper = _mapper;
         }
         public async Task<List<UserDTO>> GetUsers()
@@ -54,10 +59,23 @@ namespace OktavaProject.BL
         }
         public async Task<bool> RemoveUser(int id)
         {
-            bool isRemove = await userDL.RemoveUser(id);
-            return isRemove;
+            //   bool isRemoveSkillUser =  await skillUserDL.RemoveSkillUserByUserId(id);
+            //if (isRemoveSkillUser)
+            //{
+            //    bool isRemoveAcademicUser = await academicDegreeUserDL.RemoveAcademicDegreeUserByUserId(id);
+            //    if (isRemoveAcademicUser)
+            //    {
+                    bool isRemove = await userDL.RemoveUser(id);
+                    if (isRemove)
+                    {
+                        return true;
+                    }
+            //}
+        
+            return false;
+
         }
-       
+
     }
 }
 

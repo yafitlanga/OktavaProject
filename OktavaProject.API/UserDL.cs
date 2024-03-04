@@ -107,11 +107,32 @@ namespace OktavaProject.DL
         {
             try
             {
-                User userToRemove = await _OktavaContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+                
+                var userToRemove = await _OktavaContext.Users
+                              .Include(u => u.SkillUsers)
+                              .Include(u => u.AcademicDegreeUsers)
+                              .Include(u => u.Events)
+                              .Include(u => u.Lessons)
+                              .FirstOrDefaultAsync(u => u.Id == id);
+
                 if (userToRemove != null)
                 {
-                    _OktavaContext.Users.Remove(userToRemove);
+                    foreach (var evt in userToRemove.Events)
+                    {
+                        evt.ResponsibleUserId = null;
+                    }
                     _OktavaContext.SaveChanges();
+
+                    foreach (var evt in userToRemove.Lessons)
+                    {
+                        evt.UserId = null;
+                    }
+                    _OktavaContext.SaveChanges();
+
+                    _OktavaContext.AcademicDegreeUsers.RemoveRange(userToRemove.AcademicDegreeUsers);
+                    _OktavaContext.SkillUsers.RemoveRange(userToRemove.SkillUsers);
+                    _OktavaContext.Users.Remove(userToRemove);
+                    await _OktavaContext.SaveChangesAsync();
                     return true;
                 }
                 else

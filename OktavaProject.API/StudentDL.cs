@@ -11,20 +11,27 @@ namespace OktavaProject.DL
     public class StudentDL : IStudentDL
     {
         OktavaDBContext _OktavaContext = new OktavaDBContext();
+        //public async Task<List<Student>> GetStudents()
+        //{
+        //    try
+        //    {
+        //        var students = await _OktavaContext.Students.ToListAsync();
+        //        return students;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
         public async Task<List<Student>> GetStudents()
         {
-            try
-            {
-                var students = await _OktavaContext.Students.ToListAsync();
-                return students;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public async Task<List<Student>> GetStudentsByLesson()
-        {
+            //public async Task<List<User>> GetUsers()
+            //var users = await _OktavaContext.Users.Select(s => s).
+            //               Include(user => user.SkillUsers).
+            //               ThenInclude(skill => skill.Skill).
+            //               Include(user => user.AcademicDegreeUsers).
+            //               ThenInclude(academicDegree => academicDegree.AcademicDegree).ToListAsync();
+            //return users;
             try
             {
                 var students = await _OktavaContext.Students.Select(s => s).

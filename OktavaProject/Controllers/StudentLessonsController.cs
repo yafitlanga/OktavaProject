@@ -61,10 +61,7 @@ namespace OktavaProject.API.Controllers
             {
                 return StatusCode(500, ex.Message);
             }
-
         }
-
-
         // DELETE api/<StudentLessonsController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<bool>> Delete(int id)
