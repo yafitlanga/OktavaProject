@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OktavaProject.DL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,8 @@ namespace OktavaProjectEntities.DTO
         public int DayId { get; set; }
         public int HourId { get; set; }
         public int SkillId { get; set; }
-
+        public virtual SkillDTO Skill { get; set; } = null!;
+        public virtual DayDTO Day { get; set; } = null!;
+        public virtual HourDTO Hour { get; set; } = null!;
     }
 }

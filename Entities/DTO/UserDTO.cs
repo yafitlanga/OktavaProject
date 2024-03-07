@@ -9,11 +9,11 @@ namespace OktavaProjectEntities.DTO
 {
     public class UserDTO
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; } = null!;
-        public string LastName { get; set; } = null!;
+        public int? Id { get; set; }
+        public string? FirstName { get; set; } = null!;
+        public string? LastName { get; set; } = null!;
         public string PhoneOne { get; set; } = null!;
-        public string? PhoneTwo { get; set; }
+        public string PhoneTwo { get; set; }
         public string UsersId { get; set; } = null!;
         public string Mail { get; set; } = null!;
         public int Gender { get; set; }
@@ -21,9 +21,9 @@ namespace OktavaProjectEntities.DTO
         public string Address { get; set; } = null!;
         public int Level { get; set; }
         public string Password { get; set; } = null!;
-        public virtual ICollection<SkillUserDTO> ?SkillUsers { get; set; }
-        public virtual ICollection<AcademicDegreeUserDTO> ?AcademicDegreeUsers { get; set; }
-        public virtual ICollection<EventDTO> ?EventDTO { get; set; }
+        public virtual ICollection<SkillUserDTO>? SkillUsers { get; set; } 
+        public virtual ICollection<AcademicDegreeUserDTO>? AcademicDegreeUsers { get; set; } 
+        public virtual ICollection<EventDTO>? EventDTO { get; set; } 
 
     }
 }

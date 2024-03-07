@@ -106,8 +106,7 @@ namespace OktavaProject.DL
         public async Task<bool> RemoveUser(int id)
         {
             try
-            {
-                
+            {             
                 var userToRemove = await _OktavaContext.Users
                               .Include(u => u.SkillUsers)
                               .Include(u => u.AcademicDegreeUsers)
