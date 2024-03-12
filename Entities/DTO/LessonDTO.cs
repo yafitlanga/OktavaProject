@@ -14,8 +14,9 @@ namespace OktavaProjectEntities.DTO
         public int DayId { get; set; }
         public int HourId { get; set; }
         public int SkillId { get; set; }
-        public virtual SkillDTO Skill { get; set; } = null!;
-        public virtual DayDTO Day { get; set; } = null!;
-        public virtual HourDTO Hour { get; set; } = null!;
+        public virtual SkillDTO? Skill { get; set; } = null!;
+        public virtual DayDTO? Day { get; set; } = null!;
+        public virtual HourDTO? Hour { get; set; } = null!;
+        public virtual UserDTO? User { get; set; }
     }
 }

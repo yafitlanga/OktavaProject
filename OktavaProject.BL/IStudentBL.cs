@@ -10,5 +10,6 @@ namespace OktavaProject.BL
         Task<bool> AddStudent(StudentDTO student);
         Task<bool> UpdateStudent(StudentDTO student, int id);
         Task<bool> RemoveStudent(int id);
+        Task<List<StudentDTO>> GetStudentByUserId(int userId);
     }
 }

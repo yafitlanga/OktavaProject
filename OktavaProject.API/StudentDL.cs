@@ -19,9 +19,16 @@ namespace OktavaProject.DL
 
                             Include(student => student.StudentLessons).
                             ThenInclude(lesson => lesson.Lesson).
-                            //ThenInclude(skill => skill.Skill).
+                            ThenInclude(skill => skill.Skill).
+                            Include(student => student.StudentLessons).
+                            ThenInclude(lesson => lesson.Lesson).
                             ThenInclude(day => day.Day).
-                            //ThenInclude(hour => hour.Hour).
+                            Include(student => student.StudentLessons).
+                            ThenInclude(lesson => lesson.Lesson).
+                            ThenInclude(hour => hour.Hour).
+                            Include(student => student.StudentLessons).
+                            ThenInclude(lesson => lesson.Lesson).
+                            ThenInclude(user => user.User).
                             ToListAsync();
                 return students;
             }
@@ -37,6 +44,22 @@ namespace OktavaProject.DL
             {
                 var student = await _OktavaContext.Students.FirstOrDefaultAsync(student => student.StudentId == studentId);
                 return student;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public async Task<List<Student>> GetStudentByUserId(int userId)
+        {
+            try
+            {
+                var students = await _OktavaContext.Lessons
+                    .Where(l => l.UserId == userId) 
+                    .SelectMany(l => l.StudentLessons) 
+                    .Select(sl => sl.Student) 
+                    .ToListAsync();
+                return students;
             }
             catch (Exception ex)
             {

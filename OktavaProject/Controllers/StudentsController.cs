@@ -28,16 +28,24 @@ namespace OktavaProject.API.Controllers
         }
 
         // GET api/<StudentsController>/5
-        [HttpGet("{id}")]
-        public async Task<StudentDTO> GetStudentById(string studentId)
+        //[HttpGet]
+        //[Route("{id}")]
+        //public async Task<StudentDTO> GetStudentById(string studentId)
+        //{
+        //    var student = await studentBL.GetStudentById(studentId);
+        //    return student;
+        //}
+
+        //GET api/<StudentsController>/5
+        [HttpGet("{userId}")]
+        public async Task<List<StudentDTO>> GetStudentByUserId(int userId)
         {
-            var student = await studentBL.GetStudentById(studentId);
+            var student = await studentBL.GetStudentByUserId(userId);
             return student;
         }
-
-
         // POST api/<StudentsController>
         [HttpPost]
+        [Route("AddStudent")]
         public async Task<ActionResult<bool>> AddStudent([FromBody] StudentDTO student)
         {
             try
@@ -69,7 +77,7 @@ namespace OktavaProject.API.Controllers
 
         // DELETE api/<StudentsController>/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<bool>> Delete(int id)
+        public async Task<ActionResult<bool>> DeleteStudent(int id)
         {
             try
             {

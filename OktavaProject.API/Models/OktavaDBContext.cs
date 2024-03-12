@@ -194,19 +194,16 @@ namespace OktavaProject.DL.Models
                 entity.HasOne(d => d.Day)
                     .WithMany(p => p.Lessons)
                     .HasForeignKey(d => d.DayId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__LESSONS__DAY_ID__4316F928");
 
                 entity.HasOne(d => d.Hour)
                     .WithMany(p => p.Lessons)
                     .HasForeignKey(d => d.HourId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__LESSONS__HOUR_ID__440B1D61");
 
                 entity.HasOne(d => d.Skill)
                     .WithMany(p => p.Lessons)
                     .HasForeignKey(d => d.SkillId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__LESSONS__SKILL_I__44FF419A");
 
                 entity.HasOne(d => d.User)
