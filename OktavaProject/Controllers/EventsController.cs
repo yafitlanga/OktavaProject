@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using OktavaProject.BL;
 using OktavaProject.DL.Models;
 using OktavaProjectEntities.DTO;
@@ -38,12 +39,12 @@ namespace OktavaProject.API.Controllers
 
         // POST api/<EventController>
         [HttpPost]
-        public async Task<ActionResult<bool>> AddEvent([FromBody] EventDTO _event)
+        public async Task<ActionResult<int>> AddEvent([FromBody] EventDTO _event)
         {
             try
             {
-                bool isAddEvent = await eventBL.AddEvent(_event);
-                return Ok(isAddEvent);
+                int eventId = await eventBL.AddEvent(_event);
+                return Ok(eventId);
             }
             catch (Exception ex)
             {

@@ -33,11 +33,11 @@ namespace OktavaProject.BL
             ContactDTO contact2 = mapper.Map<ContactDTO>(contact1);
             return contact2;
         }
-        public async Task<bool> AddContact(ContactDTO Contact)
+        public async Task<int> AddContact(ContactDTO Contact)
         {
             Contact u = mapper.Map<Contact>(Contact);
-            bool isAdd = await contactDL.AddContact(u);
-            return isAdd;
+            int contactId = await contactDL.AddContact(u);
+            return contactId;
         }
         public async Task<bool> UpdateContact(ContactDTO contact, int id)
         {

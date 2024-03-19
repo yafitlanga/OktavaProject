@@ -20,6 +20,7 @@ namespace OktavaProject.API.Controllers
 
         // GET: api/<ContactsController>
         [HttpGet]
+        [Route("Getcontacts")]
         public async Task<List<ContactDTO>> Getcontacts()
         {
             var contacts = await contactBL.GetContacts();
@@ -36,18 +37,35 @@ namespace OktavaProject.API.Controllers
 
         // POST api/<ContactsController>
         [HttpPost]
-        public async Task<ActionResult<bool>> AddContact([FromBody] ContactDTO contact)
+        [Route("AddContact")]
+        public async Task<ActionResult<int>> AddContact([FromBody] ContactDTO contact)
         {
             try
             {
-                bool isAddContact = await contactBL.AddContact(contact);
-                return isAddContact;
+                int contactId = await contactBL.AddContact(contact);
+                return Ok(contactId);
             }
             catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
         }
+
+
+
+        //[HttpPost]
+        //public async Task<ActionResult<bool>> AddContact([FromBody] ContactDTO contact)
+        //{
+        //    try
+        //    {
+        //        bool isAddContact = await contactBL.AddContact(contact);
+        //        return isAddContact;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, ex.Message);
+        //    }
+        //}
 
         // PUT api/<ContactsController>/5
         [HttpPut("{id}")]

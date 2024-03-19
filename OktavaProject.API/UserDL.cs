@@ -90,6 +90,7 @@ namespace OktavaProject.DL
                     userToUpdate.Lessons = user.Lessons;
                     userToUpdate.Birthday = user.Birthday;
                     userToUpdate.Address = user.Address;
+                    //TODO - עדכון תארים ומיומניות
                     _OktavaContext.SaveChanges();
                     return true;
                 }

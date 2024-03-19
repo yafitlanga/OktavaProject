@@ -35,19 +35,20 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
-        public async Task<bool> AddContact(Contact contact)
+        public async Task<int> AddContact(Contact contact)
         {
             try
             {
                 await _OktavaContext.Contacts.AddAsync(contact);
                 _OktavaContext.SaveChanges();
-                return true;
+                return contact.Id;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+
 
         public async Task<bool> UpdateContact(Contact contact, int id)
         {

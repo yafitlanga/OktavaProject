@@ -32,11 +32,11 @@ namespace OktavaProject.BL
             EventDTO event2 = mapper.Map<EventDTO>(event1);
             return event2;
         }
-        public async Task<bool> AddEvent(EventDTO _event)
+        public async Task<int> AddEvent(EventDTO _event)
         {
             Event e = mapper.Map<Event>(_event);
-            bool isAdd = await eventDL.AddEvent(e);
-            return isAdd;
+            int eventId = await eventDL.AddEvent(e);
+            return eventId;
         }
         public async Task<bool> UpdateEvent(EventDTO _event, int id)
         {
