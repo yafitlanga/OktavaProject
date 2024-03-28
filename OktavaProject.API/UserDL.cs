@@ -42,27 +42,29 @@ namespace OktavaProject.DL
             }
         }
 
-        public async Task<User> Login(string userId,string password)
+        public async Task<User> Login(string userId, string password)
         {
             try
             {
-                var user=await _OktavaContext.Users.FirstOrDefaultAsync(u => u.Password==password && u.UsersId == userId);
+                var user = await _OktavaContext.Users.FirstOrDefaultAsync(u => u.Password == password && u.UsersId == userId);
                 if (user == null)
                 {
                     return null;
                 }
                 return user;
             }
-            catch (Exception ex) {
-                throw new Exception("the user is undifind", ex); 
+            catch (Exception ex)
+            {
+                throw new Exception("the user is undifind", ex);
             }
-
         }
+
         public async Task<int> AddUser(User user)
         {
             try
             {
-                await _OktavaContext.Users.AddAsync(user);
+                await _OktavaContext.Users.AddAsync(user);        
+
                 _OktavaContext.SaveChanges();
                 return user.Id;
             }

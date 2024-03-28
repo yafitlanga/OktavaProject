@@ -57,7 +57,7 @@ namespace OktavaProject.DL
                 {
                     studentLessonToUpdate.StudentId = studentLessonToUpdate.StudentId;
                     studentLessonToUpdate.LessonId = studentLessonToUpdate.LessonId;
-                    _OktavaContext.SaveChanges(); 
+                    _OktavaContext.SaveChanges();
                     return true;
                 }
                 else
@@ -79,6 +79,31 @@ namespace OktavaProject.DL
                 {
                     _OktavaContext.StudentLessons.Remove(studentLessonToRemove);
                     _OktavaContext.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<bool> RemoveStudentLessonsByStudentId(int StudentId)
+        {
+            try
+            {
+                List<StudentLesson> studentLessonToRemove = await _OktavaContext.StudentLessons.Where(x => x.StudentId == StudentId).ToListAsync();
+                if (studentLessonToRemove != null)
+                {
+                    foreach (var item in studentLessonToRemove)
+                    {
+                        _OktavaContext.StudentLessons.Remove(item);
+                        _OktavaContext.SaveChanges();
+                    }
                     return true;
                 }
                 else

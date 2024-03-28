@@ -12,7 +12,7 @@ namespace OktavaProject.DL
     {
         OktavaDBContext _OktavaContext = new OktavaDBContext();
         public async Task<List<Student>> GetStudents()
-        { 
+        {
             try
             {
                 var students = await _OktavaContext.Students.Select(s => s).
@@ -55,9 +55,9 @@ namespace OktavaProject.DL
             try
             {
                 var students = await _OktavaContext.Lessons
-                    .Where(l => l.UserId == userId) 
-                    .SelectMany(l => l.StudentLessons) 
-                    .Select(sl => sl.Student) 
+                    .Where(l => l.UserId == userId)
+                    .SelectMany(l => l.StudentLessons)
+                    .Select(sl => sl.Student)
                     .ToListAsync();
                 return students;
             }
@@ -114,6 +114,8 @@ namespace OktavaProject.DL
             try
             {
                 Student studentToRemove = await _OktavaContext.Students.FirstOrDefaultAsync(x => x.Id == id);
+                StudentLessonDL studentLesson = new StudentLessonDL();
+                await studentLesson.RemoveStudentLessonsByStudentId(studentToRemove.Id);
                 if (studentToRemove != null)
                 {
                     _OktavaContext.Students.Remove(studentToRemove);

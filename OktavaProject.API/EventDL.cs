@@ -50,8 +50,6 @@ namespace OktavaProject.DL
         }
         public async Task<int> AddEvent(Event _event)
         {
-            //var users = await _OktavaContext.Users.Select(s => s).
-            //                Include(user => user.SkillUsers).
             try
             {
                await _OktavaContext.Events.AddAsync(_event);
