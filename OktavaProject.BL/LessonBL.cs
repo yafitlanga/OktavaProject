@@ -30,6 +30,12 @@ namespace OktavaProject.BL
             LessonDTO Lesson2 = mapper.Map<LessonDTO>(Lesson1);
             return Lesson2;
         }
+        public async Task<List<LessonDTO>> GetLessonByUserId(int UserId)
+        {
+            List<Lesson> Lesson1 = await lessonDL.GetLessonsByUserId(UserId);
+            List<LessonDTO> Lesson2 = mapper.Map<List<LessonDTO>>(Lesson1);
+            return Lesson2;
+        }
         public async Task<bool> AddLessons(LessonDTO lesson)
         {
             Lesson l = mapper.Map<Lesson>(lesson);

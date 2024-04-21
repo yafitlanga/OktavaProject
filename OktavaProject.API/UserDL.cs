@@ -29,11 +29,11 @@ namespace OktavaProject.DL
             }
 
         }
-        public async Task<User> GetUserById(string userId)
+        public async Task<User> GetUserById(int userId)
         {
             try
             {
-                var user = await _OktavaContext.Users.FirstOrDefaultAsync(user => user.UsersId == userId);
+                var user = await _OktavaContext.Users.FirstOrDefaultAsync(user => user.Id == userId);
                 return user;
             }
             catch (Exception ex)

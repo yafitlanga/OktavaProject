@@ -13,22 +13,12 @@ namespace OktavaProject.DL
         OktavaDBContext _OktavaContext = new OktavaDBContext();
         public async Task<List<Event>> GetEvents()
         {
-            
-            //public async Task<List<User>> GetUsers()
-            //{
-            //    try
-            //    {
-            //        var users = await _OktavaContext.Users.Select(s => s).
-            //                    Include(user => user.SkillUsers).
-            //                    ThenInclude(skill => skill.Skill).
-            //                    Include(user => user.AcademicDegreeUsers).
-            //                    ThenInclude(academicDegree => academicDegree.AcademicDegree).ToListAsync();
-            //        return users;
-            //    }
             try
             {
-                var events = await _OktavaContext.Events.Select(e => e).
-                    Include(events => events.ResponsibleUser).ToListAsync();
+                var events = await _OktavaContext.Events
+                    .Include(e => e.ResponsibleUser)
+                    .ToListAsync();
+
                 return events;
             }
             catch (Exception ex)
@@ -36,6 +26,7 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+
         public async Task<Event> GetEventById(int id)
         {
             try

@@ -30,7 +30,7 @@ namespace OktavaProject.API.Controllers
         // GET api/<UsersController>/5
         [HttpGet("{id}")]
         
-        public async Task<UserDTO> GetUserById(string userId)
+        public async Task<UserDTO> GetUserById(int userId)
         {
             var user = await userBL.GetUserById(userId);
             return user;

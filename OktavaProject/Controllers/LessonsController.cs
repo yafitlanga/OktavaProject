@@ -31,6 +31,13 @@ namespace OktavaProject.API.Controllers
             var lesson = await lessonBL.GetLessonById(id);
             return lesson;
         }
+        [HttpGet]
+        [Route("GetLessonUserById/{UserId}")]
+        public async Task<List<LessonDTO>> GetLessonUserById(int UserId)
+        {
+            var lessons = await lessonBL.GetLessonByUserId(UserId);
+            return lessons;
+        }
 
         [HttpPost]
         [Route("AddUser")]

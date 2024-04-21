@@ -33,7 +33,7 @@ namespace OktavaProject.BL
             List<UserDTO> user2 = mapper.Map<List<UserDTO>>(user1);
             return user2;
         }
-        public async Task<UserDTO> GetUserById(string userId)
+        public async Task<UserDTO> GetUserById(int userId)
         {
             User user1 = await userDL.GetUserById(userId);
             if (user1 == null) { return null; }

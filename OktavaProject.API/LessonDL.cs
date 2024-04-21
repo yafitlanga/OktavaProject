@@ -28,6 +28,7 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+
         public async Task<bool> AddLesson(Lesson lesson)
         {
             try
@@ -40,6 +41,17 @@ namespace OktavaProject.DL
             {
                 throw ex;
             }
+        }
+
+        public async Task<List<Lesson>> GetLessonsByUserId(int userId)
+        {
+            var a = await _OktavaContext.Lessons.Where(l => l.UserId == userId)
+                .Include(x => x.Skill)
+                .Include(x => x.Hour)
+                .OrderBy(x => x.DayId)
+                .ThenBy(x => x.HourId).ToListAsync();
+            // var b = await _OktavaContext.Lessons.Where(l => l.UserId == userId).Include(x => x.Skill).Include(x => x.Hour).GroupBy(x=> x.DayId).ToListAsync();
+            return a;
         }
 
         public async Task<bool> UpdateLesson(Lesson lesson, int id)
