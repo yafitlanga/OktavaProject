@@ -73,12 +73,12 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
-
         public async Task<bool> UpdateUser(User user, int id)
         {
             try
             {
-                User userToUpdate = await _OktavaContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+                //User userToUpdate = await _OktavaContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+                User userToUpdate = await _OktavaContext.Users.Where(x => x.Id == id).Include(s => s.SkillUsers).Include(a => a.AcademicDegreeUsers).FirstOrDefaultAsync();
                 if (userToUpdate != null)
                 {
                     userToUpdate.FirstName = user.FirstName;
@@ -93,7 +93,38 @@ namespace OktavaProject.DL
                     userToUpdate.Birthday = user.Birthday;
                     userToUpdate.Address = user.Address;
                     //TODO - עדכון תארים ומיומניות
-                    _OktavaContext.SaveChanges();
+
+                    //*** update skills user ***
+                    var existingSkills = userToUpdate.SkillUsers;
+
+                    // Determine skills to delete
+                    var skillsToDelete = existingSkills.Where(es => !user.SkillUsers.Any(us => us.SkillId == es.SkillId)).ToList();
+
+                    // Determine skills to add
+                    var skillsToAdd = user.SkillUsers.Where(us => !existingSkills.Any(es => es.SkillId == us.SkillId)).ToList();
+
+                    // Remove skills
+                    _OktavaContext.SkillUsers.RemoveRange(skillsToDelete);
+
+                    // Add skills
+                    _OktavaContext.SkillUsers.AddRange(skillsToAdd);
+
+                    //*** update academicDegreeUser ***
+                    var existingAcademicDegree = userToUpdate.AcademicDegreeUsers;
+
+                    // Determine academicDegre to delete
+                    var AcademicDegreeToDelete = existingAcademicDegree.Where(ea => !user.AcademicDegreeUsers.Any(ua => ua.AcademicDegreeId == ea.AcademicDegreeId)).ToList();
+
+                    // Determine academicDegree to add
+                    var academicDegreeToAdd = user.AcademicDegreeUsers.Where(ua => !existingAcademicDegree.Any(ea => ea.AcademicDegreeId == ua.AcademicDegreeId)).ToList();
+
+                    // Remove academicDegree
+                    _OktavaContext.AcademicDegreeUsers.RemoveRange(AcademicDegreeToDelete);
+
+                    // Add academicDegree
+                    _OktavaContext.AcademicDegreeUsers.AddRange(academicDegreeToAdd);
+
+                    await _OktavaContext.SaveChangesAsync();
                     return true;
                 }
                 else
@@ -106,6 +137,8 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+
+        
         public async Task<bool> RemoveUser(int id)
         {
             try

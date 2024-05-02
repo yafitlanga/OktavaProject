@@ -63,7 +63,6 @@ namespace OktavaProject.API.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
         // PUT api/<UsersController>/5
         [HttpPut("{id}")]
         public async Task<ActionResult<bool>> UpdateUser(int id, [FromBody] UserDTO user)
@@ -71,7 +70,7 @@ namespace OktavaProject.API.Controllers
             try
             {
                 bool isUpdateUser = await userBL.UpdateUser(user, id);
-                return isUpdateUser;
+                return Ok(isUpdateUser);
             }
             catch (Exception ex)
             {
@@ -79,6 +78,22 @@ namespace OktavaProject.API.Controllers
             }
 
         }
+
+        //// PUT api/<UsersController>/5
+        //[HttpPut("{id}")]
+        //public async Task<ActionResult<bool>> UpdateUser(int id, [FromBody] UserDTO user)
+        //{
+        //    try
+        //    {
+        //        bool isUpdateUser = await userBL.UpdateUser(user, id);
+        //        return isUpdateUser;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, ex.Message);
+        //    }
+
+        //}
 
         // DELETE api/<UsersController>/5
         [HttpDelete("{id}")]

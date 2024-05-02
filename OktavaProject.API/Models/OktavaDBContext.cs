@@ -139,6 +139,8 @@ namespace OktavaProject.DL.Models
 
                 entity.Property(e => e.ResponsibleUserId).HasColumnName("RESPONSIBLE_USER_ID");
 
+                entity.Property(e => e.Urlimg).HasColumnName("URLIMG");
+
                 entity.HasOne(d => d.ResponsibleUser)
                     .WithMany(p => p.Events)
                     .HasForeignKey(d => d.ResponsibleUserId)

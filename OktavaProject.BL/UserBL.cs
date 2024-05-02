@@ -57,6 +57,12 @@ namespace OktavaProject.BL
             bool isUpdate = await userDL.UpdateUser(u, id);
             return isUpdate;
         }
+        //public async Task<bool> UpdateUser(UserDTO user, int id)
+        //{
+        //    User u = mapper.Map<User>(user);
+        //    bool isUpdate = await userDL.UpdateUser(u, id);
+        //    return isUpdate;
+        //}
         public async Task<bool> RemoveUser(int id)
         {
             //   bool isRemoveSkillUser =  await skillUserDL.RemoveSkillUserByUserId(id);
