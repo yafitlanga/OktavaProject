@@ -84,7 +84,12 @@ namespace OktavaProject.DL
         {
             try
             {
-                Student studentToUpdate = await _OktavaContext.Students.FirstOrDefaultAsync(x => x.Id == id);
+                //Student studentToUpdate = await _OktavaContext.Students.FirstOrDefaultAsync(x => x.Id == id);
+                Student studentToUpdate = await _OktavaContext.Students.
+                    Where(x => x.Id == id).
+                    Include(sl => sl.StudentLessons).
+                    FirstOrDefaultAsync();
+
                 if (studentToUpdate != null)
                 {
                     studentToUpdate.FirstName = student.FirstName;
