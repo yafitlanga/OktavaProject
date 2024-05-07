@@ -26,18 +26,18 @@ namespace OktavaProject.BL
             List<StudentDTO> student2 = mapper.Map<List<StudentDTO>>(student1);
             return student2;
         }
-        public async Task<StudentDTO> GetStudentById(string studentId)
+        public async Task<List<StudentDTO>> GetStudentById(int studentId)
         {
-            Student student1 = await studentDL.GetStudentById(studentId);
+            List<Student> student1 = await studentDL.GetStudentById(studentId);
             if (student1 == null) { return null; }
-            StudentDTO student2 = mapper.Map<StudentDTO>(student1);
+            List<StudentDTO> student2 = mapper.Map<List<StudentDTO>>(student1);
             return student2;
         }
         public async Task<List<StudentDTO>> GetStudentByUserId(int userId)
         {
          List< Student> student1 = await studentDL.GetStudentByUserId(userId);
             if (student1 == null) { return null; }
-        List<    StudentDTO> student2 = mapper.Map<List<StudentDTO>>(student1);
+        List<StudentDTO> student2 = mapper.Map<List<StudentDTO>>(student1);
             return student2;
         }
         public async Task<bool> AddStudent(StudentDTO student)

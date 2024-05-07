@@ -38,11 +38,27 @@ namespace OktavaProject.DL
             }
 
         }
-        public async Task<Student> GetStudentById(string studentId)
+        public async Task<List<Student>> GetStudentById(int studentId)
         {
             try
             {
-                var student = await _OktavaContext.Students.FirstOrDefaultAsync(student => student.StudentId == studentId);
+                var student = await _OktavaContext.Students.Select(s => s).
+                            Where(student => student.Id == studentId).
+                            Include(student => student.StudentLessons).
+                            ThenInclude(lesson => lesson.Lesson).
+                            ThenInclude(skill => skill.Skill).
+                            Include(student => student.StudentLessons).
+                            ThenInclude(lesson => lesson.Lesson).
+                            ThenInclude(day => day.Day).
+                            Include(student => student.StudentLessons).
+                            ThenInclude(lesson => lesson.Lesson).
+                            ThenInclude(hour => hour.Hour).
+                            Include(student => student.StudentLessons).
+                            ThenInclude(lesson => lesson.Lesson).
+                            ThenInclude(user => user.User).
+                            OrderBy(day => day.Id).
+                            ThenBy(hour => hour.Id).
+                            ToListAsync();
                 return student;
             }
             catch (Exception ex)
@@ -84,11 +100,11 @@ namespace OktavaProject.DL
         {
             try
             {
-                //Student studentToUpdate = await _OktavaContext.Students.FirstOrDefaultAsync(x => x.Id == id);
-                Student studentToUpdate = await _OktavaContext.Students.
-                    Where(x => x.Id == id).
-                    Include(sl => sl.StudentLessons).
-                    FirstOrDefaultAsync();
+                Student studentToUpdate = await _OktavaContext.Students.FirstOrDefaultAsync(x => x.Id == id);
+                //Student studentToUpdate = await _OktavaContext.Students.
+                //    Where(x => x.Id == id).
+                //    Include(sl => sl.StudentLessons).
+                //    FirstOrDefaultAsync();
 
                 if (studentToUpdate != null)
                 {
@@ -100,6 +116,18 @@ namespace OktavaProject.DL
                     studentToUpdate.Mail = student.Mail;
                     studentToUpdate.StudentId = student.StudentId;
                     studentToUpdate.Phone = student.Phone;
+
+                    //*** update student lessons ***
+                    //var existingStudentLessons = studentToUpdate.StudentLessons;
+
+                    // Determine student lessons to delete
+                    //var studentLessonsToDelete = existingStudentLessons.Where(sl => !student.StudentLessons.Any(sl => sl.LessonId == sl.LessonId)).ToList();
+
+                    // Determine Student Lessons to add
+                    //var StudentLessonsToAdd = student.StudentLessons.Where(sl => !existingStudentLessons.Any(sl => sl.LessonId == sl.LessonId)).ToList();
+
+                    // Remove Student Lessons
+                    //_OktavaContext.StudentLessons.RemoveRange(studentLessonsToDelete);
                 }
                 else
                 {

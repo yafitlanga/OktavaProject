@@ -26,9 +26,9 @@ namespace OktavaProject.DL.Models
         public int Level { get; set; }
         public string Password { get; set; } = null!;
 
-        public virtual ICollection<AcademicDegreeUser> AcademicDegreeUsers { get; set; }
-        public virtual ICollection<Event> Events { get; set; }
-        public virtual ICollection<Lesson> Lessons { get; set; }
-        public virtual ICollection<SkillUser> SkillUsers { get; set; }
+        public virtual ICollection<AcademicDegreeUser>? AcademicDegreeUsers { get; set; }
+        public virtual ICollection<Event>? Events { get; set; }
+        public virtual ICollection<Lesson>? Lessons { get; set; }
+        public virtual ICollection<SkillUser>? SkillUsers { get; set; }
     }
 }
