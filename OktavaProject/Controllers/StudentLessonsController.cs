@@ -23,6 +23,14 @@ namespace OktavaProject.API.Controllers
         {
             return await studentLessonBL.GetStudentLessons();
         }
+
+        [HttpGet]
+        [Route("GetStudentLessons/{lessonId}")]
+        public async Task<List<StudentLessonDTO>> GetStudentLessons(int lessonId)
+        {
+            return await studentLessonBL.GetStudentLessons(lessonId);
+        }
+
         // GET api/<StudentLessonsController>/5
         [HttpGet("{id}")]
         public async Task<StudentLessonDTO> Get(int id)

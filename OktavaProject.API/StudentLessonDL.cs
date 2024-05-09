@@ -23,6 +23,33 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+
+        public async Task<List<StudentLesson>> GetStudentLessons(int lessonId)
+        {
+            try
+            {
+                var students = await _OktavaContext.StudentLessons.Include(s => s.Student).Where(s => s.LessonId == lessonId)
+                    .Select(s => new StudentLesson
+                    {
+                        Id = s.Id,
+                        LessonId = s.LessonId,
+                        StudentId = s.StudentId,
+                        Student = new Student
+                        {
+                            FirstName = s.Student.FirstName,
+                            LastName = s.Student.LastName,
+                            Phone = s.Student.Phone,
+                            Birthday = s.Student.Birthday,
+                            Address = s.Student.Address,
+                        }
+                    }).ToListAsync();
+                return students;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public async Task<StudentLesson> GetStudentLessonById(int id)
         {
             try

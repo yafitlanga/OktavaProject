@@ -1,4 +1,5 @@
 ﻿using OktavaProject.DL.Models;
+using OktavaProjectEntities.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,6 @@ namespace OktavaProjectEntities.DTO
         public int StudentId { get; set; }
         public int LessonId { get; set; }
         public LessonDTO? Lesson { get; set; } = null!;
+        public Student? Student { get; set; } = null;
     }
 }

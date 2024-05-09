@@ -7,6 +7,7 @@ namespace OktavaProject.BL
     {
         Task<List<StudentLessonDTO>> GetStudentLessons();
         Task<StudentLessonDTO> GetStudentLessonById(int id);
+        Task<List<StudentLessonDTO>> GetStudentLessons(int lessonId);
         Task<bool> UpdateStudentLesson(StudentLessonDTO studentLesson, int id);
         Task<bool> AddStudentLesson(StudentLessonDTO StudentLesson);
         Task<bool> RemoveStudentLesson(int id);

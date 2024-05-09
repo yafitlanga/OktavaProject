@@ -5,6 +5,7 @@ namespace OktavaProject.DL
     public interface IStudentLessonDL
     {
         Task<List<StudentLesson>> GetStudentLessons();
+        Task<List<StudentLesson>> GetStudentLessons(int lessonId);
         Task<StudentLesson> GetStudentLessonById(int id);
         Task<bool> AddStudentLesson(StudentLesson studentLesson);
         Task<bool> UpdateStudentLesson(StudentLesson studentLesson,int id);
