@@ -14,6 +14,6 @@ namespace OktavaProjectEntities.DTO
         public int StudentId { get; set; }
         public int LessonId { get; set; }
         public LessonDTO? Lesson { get; set; } = null!;
-        public StudentDTO? Student { get; set; } = null;
+        public StudentSimpleDTO? Student { get; set; } = null;
     }
 }

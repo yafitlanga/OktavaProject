@@ -39,6 +39,10 @@ namespace OktavaProjectEntities
             CreateMap<LessonDTO, Lesson>();
             CreateMap<StudentLesson, StudentLessonDTO>();
             CreateMap<StudentLessonDTO, StudentLesson>();
+            CreateMap<Student, StudentSimpleDTO>();
+            CreateMap<StudentSimpleDTO, Student>();
+            CreateMap<Event, EventSimpleDTO>();
+            CreateMap<EventSimpleDTO, Event>();
         }
     }
 }

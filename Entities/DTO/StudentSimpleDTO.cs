@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OktavaProjectEntities.DTO
 {
-    public class StudentDTO
+    public class StudentSimpleDTO
     {
         public int Id { get; set; }
         public string FirstName { get; set; } = null!;
@@ -17,9 +17,6 @@ namespace OktavaProjectEntities.DTO
         public string? Mail { get; set; }
         public string Address { get; set; } = null!;
         public string Phone { get; set; } = null!;
-
-        public virtual ICollection<StudentLessonDTO>? StudentLessons { get; set; }
-
 
     }
 }
