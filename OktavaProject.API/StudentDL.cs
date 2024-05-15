@@ -15,21 +15,8 @@ namespace OktavaProject.DL
         {
             try
             {
-                var students = await _OktavaContext.Students.Select(s => s).
-
-                            Include(student => student.StudentLessons).
-                            ThenInclude(lesson => lesson.Lesson).
-                            ThenInclude(skill => skill.Skill).
-                            Include(student => student.StudentLessons).
-                            ThenInclude(lesson => lesson.Lesson).
-                            ThenInclude(day => day.Day).
-                            Include(student => student.StudentLessons).
-                            ThenInclude(lesson => lesson.Lesson).
-                            ThenInclude(hour => hour.Hour).
-                            Include(student => student.StudentLessons).
-                            ThenInclude(lesson => lesson.Lesson).
-                            ThenInclude(user => user.User).
-                            ToListAsync();
+                var students = await _OktavaContext.Students.
+                          ToListAsync();
                 return students;
             }
             catch (Exception ex)
@@ -42,7 +29,7 @@ namespace OktavaProject.DL
         {
             try
             {
-                var student = await _OktavaContext.Students.Select(s => s).
+                var student = await _OktavaContext.Students.
                             Where(student => student.Id == studentId).
                             Include(student => student.StudentLessons).
                             ThenInclude(lesson => lesson.Lesson).
