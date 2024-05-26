@@ -17,6 +17,7 @@ namespace OktavaProjectEntities.DTO
         public DateTime Date { get; set; }
         public int? ResponsibleUserId { get; set; }
         public string? Urlimg { get; set; }
+        public bool Active { get; set; }
 
         public virtual UserDTO? ResponsibleUser { get; set; } = null!;
         

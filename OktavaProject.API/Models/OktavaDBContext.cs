@@ -119,6 +119,8 @@ namespace OktavaProject.DL.Models
 
                 entity.Property(e => e.Id).HasColumnName("ID");
 
+                entity.Property(e => e.Active).HasColumnName("ACTIVE");
+
                 entity.Property(e => e.Address)
                     .HasMaxLength(50)
                     .HasColumnName("ADDRESS");

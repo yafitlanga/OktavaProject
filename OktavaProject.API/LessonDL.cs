@@ -81,6 +81,18 @@ namespace OktavaProject.DL
                 throw ex;
             }
         }
+
+        public async Task<List<Lesson>> GetLessonsForSelect()
+        {
+
+            return await _OktavaContext.Lessons
+                .Include(lesson => lesson.Day)
+                .Include(lesson => lesson.Hour)
+                .Include(lesson => lesson.Skill)
+                .Include(lesson => lesson.User)
+                .ToListAsync();
+
+        }
         public async Task<bool> RemoveLesson(int id)
         {
             try
