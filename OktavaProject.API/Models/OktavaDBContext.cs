@@ -125,9 +125,9 @@ namespace OktavaProject.DL.Models
                     .HasMaxLength(50)
                     .HasColumnName("ADDRESS");
 
-                entity.Property(e => e.Date)
+                entity.Property(e => e.Day)
                     .HasColumnType("date")
-                    .HasColumnName("DATE");
+                    .HasColumnName("DAY");
 
                 entity.Property(e => e.Hour)
                     .HasMaxLength(50)

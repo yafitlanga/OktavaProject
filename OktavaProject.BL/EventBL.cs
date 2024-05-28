@@ -26,6 +26,12 @@ namespace OktavaProject.BL
             List<EventDTO> event2 = mapper.Map<List<EventDTO>>(event1);
             return event2;
         }
+        public async Task<List<EventDTO>> GetEventsOnlyActive()
+        {
+            List<Event> event1 = await eventDL.GetEventsOnlyActive();
+            List<EventDTO> event2 = mapper.Map<List<EventDTO>>(event1);
+            return event2;
+        }
         public async Task<EventDTO> GetEventById(int id)
         {
             Event event1 = await eventDL.GetEventById(id);

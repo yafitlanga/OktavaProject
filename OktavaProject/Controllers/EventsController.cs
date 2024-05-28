@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using OktavaProject.BL;
 using OktavaProject.DL.Models;
 using OktavaProjectEntities.DTO;
+using System.Collections.Generic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,6 +21,7 @@ namespace OktavaProject.API.Controllers
         {
             this.eventBL = eventBL; 
         }
+        //GET api/<EventController>
         [HttpGet]
         [Route("GetEvents")]
         public async Task<List<EventDTO>> GetEvents()
@@ -35,7 +37,14 @@ namespace OktavaProject.API.Controllers
             var events= await eventBL.GetEventById(id);
             return events;
         }
-
+        //GET api/<EventController>
+        [HttpGet]
+        [Route("GetEventsOnlyActive")]
+        public async Task<List<EventDTO>> GetEventsOnlyActive()
+        {
+            var events = await eventBL.GetEventsOnlyActive();
+            return events;
+        }
 
         // POST api/<EventController>
         [HttpPost]

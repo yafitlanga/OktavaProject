@@ -27,6 +27,19 @@ namespace OktavaProject.DL
             }
         }
 
+        public async Task<List<Event>> GetEventsOnlyActive()
+        {
+            try
+            {
+                var events = await _OktavaContext.Events.Where(e => e.Active == true).ToListAsync();
+                return events;
+            }
+            catch (Exception ex)
+            { 
+                throw ex;
+            }   
+        }
+
         public async Task<Event> GetEventById(int id)
         {
             try
@@ -64,7 +77,7 @@ namespace OktavaProject.DL
                     eventToUpdate.Address = _event.Address;
                     eventToUpdate.Hour = _event.Hour;
                     eventToUpdate.Payment = _event.Payment;
-                    eventToUpdate.Date = _event.Date;
+                    eventToUpdate.Day = _event.Day;
                     eventToUpdate.ResponsibleUserId = _event.ResponsibleUserId;
                 }
                 else
