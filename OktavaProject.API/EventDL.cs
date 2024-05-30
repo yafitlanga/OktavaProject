@@ -78,6 +78,7 @@ namespace OktavaProject.DL
                     eventToUpdate.Hour = _event.Hour;
                     eventToUpdate.Payment = _event.Payment;
                     eventToUpdate.Day = _event.Day;
+                    eventToUpdate.Active = _event.Active;
                     eventToUpdate.ResponsibleUserId = _event.ResponsibleUserId;
                 }
                 else
