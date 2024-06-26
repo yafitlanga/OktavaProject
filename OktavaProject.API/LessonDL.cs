@@ -14,7 +14,23 @@ namespace OktavaProject.DL
         OktavaDBContext _OktavaContext = new OktavaDBContext();
         public async Task<List<Lesson>> GetLessons()
         {
-            return await _OktavaContext.Lessons.ToListAsync();
+            return await _OktavaContext.Lessons
+                .Include(lesson => lesson.Day)              
+                .Include(lesson => lesson.Hour)               
+                .Include(lesson => lesson.Skill)
+                .Include(lesson => lesson.User)
+                .OrderBy(lesson => lesson.Hour)
+                .ToListAsync();
+        }
+
+        public async Task<List<Lesson>> GetLessonWithDetails(int lessonId)
+        {
+            var lessons = await _OktavaContext.Lessons.Where(lesson => lesson.Id == lessonId)
+                .Include(l => l.Hour)
+                .Include(l => l.Day)
+                .Include(l => l.Skill)
+                .ToListAsync();
+            return lessons;
         }
         public async Task<Lesson> GetLessonsById(int id)
         {

@@ -19,10 +19,18 @@ namespace OktavaProject.API.Controllers
         }
         // GET: api/<LessonsController>
         [HttpGet]
-        public async Task<List<Lesson>> GetLessons()
+        [Route("GetLessons")]
+        public async Task<List<LessonDTO>> GetLessons()
         {
             var lessons = await lessonBL.GetLessons();
             return lessons;          
+        }
+        [HttpGet]
+        [Route("GetLessonWithDetails/{lessonId}")]
+        public async Task<List<LessonDTO>> GetLessonWithDetails(int lessonId)
+        {
+            var lessons = await lessonBL.GetLessonWithDetails(lessonId);
+            return lessons;
         }
 
         [HttpGet]
@@ -49,7 +57,7 @@ namespace OktavaProject.API.Controllers
         }
 
         [HttpPost]
-        [Route("AddUser")]
+        [Route("AddLesson")]
         public async Task<ActionResult<bool>> AddLesson([FromBody] LessonDTO lesson)
         {
             try

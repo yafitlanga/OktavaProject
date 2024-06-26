@@ -63,7 +63,7 @@ namespace OktavaProject.API.Controllers
 
         // PUT api/<EventController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<bool>> Put(int id, [FromBody] EventDTO _event)
+        public async Task<ActionResult<bool>> UpdateEvent([FromBody] EventDTO _event, int id)
         {
             try
             {

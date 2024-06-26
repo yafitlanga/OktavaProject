@@ -37,6 +37,8 @@ namespace OktavaProjectEntities
             CreateMap<AcademicDegreeUserDTO, AcademicDegreeUser>();
             CreateMap<Lesson, LessonDTO>();
             CreateMap<LessonDTO, Lesson>();
+            //CreateMap<Lesson, LessonSimpleDTO>();
+            //CreateMap<LessonSimpleDTO, Lesson>();
             CreateMap<StudentLesson, StudentLessonDTO>();
             CreateMap<StudentLessonDTO, StudentLesson>();
             CreateMap<Student, StudentSimpleDTO>();

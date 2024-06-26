@@ -14,7 +14,8 @@ namespace OktavaProjectEntities.DTO
         public string Address { get; set; } = null!;
         public string Hour { get; set; } = null!;
         public double? Payment { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime Day { get; set; }
+        public bool Active { get; set; }    
         public int? ResponsibleUserId { get; set; }
         public string? Urlimg { get; set; }        
     }

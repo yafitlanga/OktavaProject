@@ -20,7 +20,8 @@ namespace OktavaProject.DL
                             Include(user => user.SkillUsers).
                             ThenInclude(skill => skill.Skill).
                             Include(user => user.AcademicDegreeUsers).
-                            ThenInclude(academicDegree => academicDegree.AcademicDegree).ToListAsync();
+                            ThenInclude(academicDegree => academicDegree.AcademicDegree)
+                            .ToListAsync();
                 return users;
             }
             catch (Exception ex)
@@ -46,7 +47,9 @@ namespace OktavaProject.DL
         {
             try
             {
-                var user = await _OktavaContext.Users.FirstOrDefaultAsync(u => u.Password == password && u.UsersId == userId);
+                var user = await _OktavaContext.Users.
+                           FirstOrDefaultAsync
+                           (u => u.Password == password && u.UsersId == userId);
                 if (user == null)
                 {
                     return null;

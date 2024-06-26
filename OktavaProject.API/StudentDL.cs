@@ -60,7 +60,7 @@ namespace OktavaProject.DL
                 var students = await _OktavaContext.Lessons
                     .Where(l => l.UserId == userId)
                     .SelectMany(l => l.StudentLessons)
-                    .Select(sl => sl.Student)
+                    .Select(sl => sl.Student)                 
                     .ToListAsync();
                 return students;
             }
